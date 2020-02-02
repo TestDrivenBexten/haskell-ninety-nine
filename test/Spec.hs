@@ -18,3 +18,16 @@ main = hspec $ do
             let numberList = [4,5,6]
             it "The last number should be returned" $ do
                 lastInList numberList `shouldBe` 6
+
+    describe "When finding the penultimate element in a list" $ do
+        it "An empty list should throw an error" $ do
+            penultimateInList [] `shouldThrow` anyException
+        
+        -- it "A list with one element should throw an error" $ do
+        --     penultimateInList [5] `shouldThrow` anyException
+
+        it "A list with two elements should return the first element" $ do
+            penultimateInList [7,8] `shouldBe` 7
+
+        it "A list with three elements should return the second element" $ do
+            penultimateInList [5,6,7] `shouldBe` 6
