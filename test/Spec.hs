@@ -1,3 +1,4 @@
+import Control.Exception
 import Test.Hspec
 import ListNinetyNine
 
@@ -23,8 +24,8 @@ main = hspec $ do
         it "An empty list should throw an error" $ do
             penultimateInList [] `shouldThrow` anyException
         
-        -- it "A list with one element should throw an error" $ do
-        --     penultimateInList [5] `shouldThrow` anyException
+        it "A list with one element should throw an error" $ do
+            evaluate (penultimateInList [5]) `shouldThrow` anyException
 
         it "A list with two elements should return the first element" $ do
             penultimateInList [7,8] `shouldBe` 7
