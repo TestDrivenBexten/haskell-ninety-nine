@@ -5,7 +5,9 @@ module ListNinetyNine
       numElements,
       reverseList,
       isPalindrome,
-      trimEnds
+      trimEnds,
+      flattenList,
+      Tree(Node,Branch)
     ) where
 
 lastInList :: [a] -> a
@@ -40,3 +42,8 @@ isPalindrome (xs) = (head xs == lastInList xs) && isPalindrome (trimEnds xs)
 
 trimEnds :: [a] -> [a]
 trimEnds x = drop 1 (take (numElements x - 1) x)
+
+-- A nested list pretty much boils down to a tree
+data Tree a = Node a | Branch [Tree a]
+flattenList :: Tree a -> [a]
+flattenList (Node x) = [x]

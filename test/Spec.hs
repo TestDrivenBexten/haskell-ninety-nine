@@ -6,9 +6,8 @@ main :: IO ()
 main = hspec $ do
     describe "When finding the last element of a list" $ do
         describe "Given an empty list" $ do
-            let emptyList = []
             it "Should throw an error" $ do
-                lastInList emptyList `shouldThrow` anyException
+                lastInList [] `shouldThrow` anyException
 
         describe "Given a list of fractionals" $ do
             let fractionalList = [2.5,5.6,8.9]
@@ -66,9 +65,8 @@ main = hspec $ do
             numElements "Hello, World!" `shouldBe` 13
 
     describe "When reversing a list" $ do
-        let emptyList = []
         it "An empty list should be an empty list" $do
-            length (reverseList emptyList) `shouldBe` 0
+            length (reverseList ([] :: [Int])) `shouldBe` 0
 
         it "The list [5] should be [5]" $ do
             reverseList [5] `shouldBe` [5]
@@ -131,3 +129,7 @@ main = hspec $ do
 
         it "The word \"borroworrob\" is a palindrome" $ do
             isPalindrome "borroworrob" `shouldBe` True
+
+    describe "When flattening a nested list" $ do
+        it "The list [5] should be [5]" $ do
+            flattenList (Node 5) `shouldBe` [5]
