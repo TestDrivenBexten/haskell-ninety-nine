@@ -83,6 +83,19 @@ main = hspec $ do
             reverseList "Haskell" `shouldBe` "lleksaH"
 
     describe "When checking for a palindome" $ do
+        describe "When trimming the ends off a word" $ do
+            it "An empty String should be an empty String" $ do
+                trimEnds "" `shouldBe` ""
+            
+            it "The character 'a' should be ''" $ do
+                trimEnds "a" `shouldBe` ""
+
+            it "The word \"no\" should be ''" $ do
+                trimEnds "no" `shouldBe` ""
+
+            it "The word \"cat\" should be 'a'" $ do
+                trimEnds "cat" `shouldBe` "a"
+
         it "An empty list should throw an exception" $ do
             isPalindrome ([] :: [Int]) `shouldBe` True
 

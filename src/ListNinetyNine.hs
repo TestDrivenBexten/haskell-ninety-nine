@@ -4,7 +4,8 @@ module ListNinetyNine
       kthInList,
       numElements,
       reverseList,
-      isPalindrome
+      isPalindrome,
+      trimEnds
     ) where
 
 lastInList :: [a] -> a
@@ -35,7 +36,10 @@ reverseList (x:xs) = (reverseList xs) ++ [x]
 
 isPalindrome :: (Eq a) => [a] -> Bool
 isPalindrome [] = True
-isPalindrome [x] = True
-isPalindrome [x,y] = x == y
-isPalindrome [x,y,z] = x == z
+-- isPalindrome [x] = True
+-- isPalindrome [x,y] = x == y
+-- isPalindrome [x,y,z] = x == z
 isPalindrome (xs) = False
+
+trimEnds :: String -> String
+trimEnds x = drop 1 (take (numElements x - 1) x)
