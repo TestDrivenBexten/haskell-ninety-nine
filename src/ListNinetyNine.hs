@@ -1,6 +1,7 @@
 module ListNinetyNine
     ( lastInList,
-      penultimateInList
+      penultimateInList,
+      kthInList
     ) where
 
 lastInList :: [a] -> a
@@ -13,3 +14,7 @@ penultimateInList [] = error "Empty list"
 penultimateInList [x] = error "List requires two or more elements"
 penultimateInList [x,y] = x
 penultimateInList (_:xs) = penultimateInList xs
+
+kthInList :: [a] -> Int -> a
+kthInList [] x = error "Empty list"
+kthInList xs x = xs !! (x - 1)

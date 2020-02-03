@@ -32,3 +32,22 @@ main = hspec $ do
 
         it "A list with three elements should return the second element" $ do
             penultimateInList [5,6,7] `shouldBe` 6
+
+    describe "When finding the kth element in a list" $ do
+        it "An empty list should throw an error" $ do
+            kthInList [] 1 `shouldThrow` anyException
+
+        it "A list with one element should throw an error for k=2" $ do
+            evaluate (kthInList [5] 2) `shouldThrow` anyException
+
+        it "A list with one element should throw an error for k=0" $ do
+            evaluate (kthInList [5] 0) `shouldThrow` anyException
+
+        it "A list with one element should return the element for k=1" $ do
+            kthInList [5] 1 `shouldBe` 5
+        
+        it "A list with two elements should return the second element for k=2" $ do
+            kthInList [8,3] 2 `shouldBe` 3
+
+        it "The String \"Haskell\" should return 'e' for k=5" $ do
+            kthInList "Haskell" 5 `shouldBe` 'e'
