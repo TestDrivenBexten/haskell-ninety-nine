@@ -64,3 +64,20 @@ main = hspec $ do
 
         it "The String \"Hello, World!\" should return 13" $ do
             numElements "Hello, World!" `shouldBe` 13
+
+    describe "When reversing a list" $ do
+        let emptyList = []
+        it "An empty list should be an empty list" $do
+            length (reverseList emptyList) `shouldBe` 0
+
+        it "The list [5] should be [5]" $ do
+            reverseList [5] `shouldBe` [5]
+
+        it "The list [4,5] should be [5,4]" $ do
+            reverseList [4,5] `shouldBe` [5,4]
+
+        it "The list [3,4,5] should be [5,4,3]" $ do
+            reverseList [3,4,5] `shouldBe` [5,4,3]
+
+        it "The String \"Haskell\" should be \"lleksaH\"" $ do
+            reverseList "Haskell" `shouldBe` "lleksaH"

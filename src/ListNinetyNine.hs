@@ -2,7 +2,8 @@ module ListNinetyNine
     ( lastInList,
       penultimateInList,
       kthInList,
-      numElements
+      numElements,
+      reverseList
     ) where
 
 lastInList :: [a] -> a
@@ -24,3 +25,9 @@ numElements :: [a] -> Int
 numElements [] = 0
 numElements [x] = 1
 numElements (_:xs) = 1 + numElements xs
+
+reverseList :: [a] -> [a]
+reverseList [] = []
+reverseList [x] = [x]
+reverseList [x,y] = [y,x]
+reverseList (x:xs) = (x: reverseList xs)
