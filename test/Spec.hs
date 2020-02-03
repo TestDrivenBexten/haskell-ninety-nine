@@ -81,3 +81,28 @@ main = hspec $ do
 
         it "The String \"Haskell\" should be \"lleksaH\"" $ do
             reverseList "Haskell" `shouldBe` "lleksaH"
+
+    describe "When checking for a palindome" $ do
+        it "An empty list is a palindrome" $ do
+            isPalindrome [] `shouldBe` True
+
+        it "A list with one number is a palindrome" $ do
+            isPalindrome [5] `shouldBe` True
+
+        it "A single character is a palindrome" $ do
+            isPalindrome "a" `shouldBe` True
+
+        it "The word \"cat\" is not a palindrome" $ do
+            isPalindrome "cat" `shouldBe` False
+
+        it "The word \"bib\" is a palindrome" $ do
+            isPalindrome "bib" `shouldBe` True
+
+        it "A list with the numbers [3,4,5] is not a palindrome" $ do
+            isPalindrome [3,4,5] `shouldBe` False
+
+        it "A list with the numbers [6,2,6] is a palindrome" $ do
+            isPalindrome [6,2,6] `shouldBe` True
+
+        it "The phrase \"borrow or rob\" is a palindrome" $ do
+            isPalindrome "borrow or rob" `shouldBe` True

@@ -3,7 +3,8 @@ module ListNinetyNine
       penultimateInList,
       kthInList,
       numElements,
-      reverseList
+      reverseList,
+      isPalindrome
     ) where
 
 lastInList :: [a] -> a
@@ -31,3 +32,6 @@ reverseList [] = []
 reverseList [x] = [x]
 reverseList [x,y] = [y,x]
 reverseList (x:xs) = (reverseList xs) ++ [x]
+
+isPalindrome :: [a] -> Bool
+isPalindrome (xs) = False
