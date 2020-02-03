@@ -30,4 +30,4 @@ reverseList :: [a] -> [a]
 reverseList [] = []
 reverseList [x] = [x]
 reverseList [x,y] = [y,x]
-reverseList (x:xs) = (x: reverseList xs)
+reverseList (x:xs) = (reverseList xs) ++ [x]
