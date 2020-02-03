@@ -51,3 +51,16 @@ main = hspec $ do
 
         it "The String \"Haskell\" should return 'e' for k=5" $ do
             kthInList "Haskell" 5 `shouldBe` 'e'
+
+    describe "When finding the number of elements in a list" $ do
+        it "An empty list should return 0" $ do
+            numElements [] `shouldBe` 0
+
+        it "A list with one number should return 1" $ do
+            numElements [7] `shouldBe` 1
+
+        it "The String \"Haskell\" should return 7" $ do
+            numElements "Haskell" `shouldBe` 7
+
+        it "The String \"Hello, World!\" should return 13" $ do
+            numElements "Hello, World!" `shouldBe` 13

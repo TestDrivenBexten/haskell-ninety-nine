@@ -1,7 +1,8 @@
 module ListNinetyNine
     ( lastInList,
       penultimateInList,
-      kthInList
+      kthInList,
+      numElements
     ) where
 
 lastInList :: [a] -> a
@@ -18,3 +19,8 @@ penultimateInList (_:xs) = penultimateInList xs
 kthInList :: [a] -> Int -> a
 kthInList [] x = error "Empty list"
 kthInList xs x = xs !! (x - 1)
+
+numElements :: [a] -> Int
+numElements [] = 0
+numElements [x] = 1
+numElements (_:xs) = 1 + numElements xs
