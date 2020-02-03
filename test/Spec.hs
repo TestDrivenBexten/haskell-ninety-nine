@@ -92,6 +92,18 @@ main = hspec $ do
         it "A single character is a palindrome" $ do
             isPalindrome "a" `shouldBe` True
 
+        it "A list with the numbers [5,5] is a palindrome" $ do
+            isPalindrome [5,5] `shouldBe` True
+
+        it "A list with the numbers [3,7] is not a palindrome" $ do
+            isPalindrome [3,7] `shouldBe` False
+
+        it "The word \"aa\" is a palindrome" $ do
+            isPalindrome "aa" `shouldBe` True
+
+        it "The word \"no\" is not a palindrome" $ do
+            isPalindrome "no" `shouldBe` False
+
         it "The word \"cat\" is not a palindrome" $ do
             isPalindrome "cat" `shouldBe` False
 

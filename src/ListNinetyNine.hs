@@ -34,4 +34,6 @@ reverseList [x,y] = [y,x]
 reverseList (x:xs) = (reverseList xs) ++ [x]
 
 isPalindrome :: [a] -> Bool
+isPalindrome [] = True
+
 isPalindrome (xs) = False
