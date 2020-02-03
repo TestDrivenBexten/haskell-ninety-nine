@@ -36,10 +36,7 @@ reverseList (x:xs) = (reverseList xs) ++ [x]
 
 isPalindrome :: (Eq a) => [a] -> Bool
 isPalindrome [] = True
--- isPalindrome [x] = True
--- isPalindrome [x,y] = x == y
--- isPalindrome [x,y,z] = x == z
-isPalindrome (xs) = False
+isPalindrome (xs) = (head xs == lastInList xs) && isPalindrome (trimEnds xs)
 
 trimEnds :: [a] -> [a]
 trimEnds x = drop 1 (take (numElements x - 1) x)
