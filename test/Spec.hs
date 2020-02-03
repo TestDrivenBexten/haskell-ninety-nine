@@ -131,5 +131,11 @@ main = hspec $ do
             isPalindrome "borroworrob" `shouldBe` True
 
     describe "When flattening a nested list" $ do
-        it "The list [5] should be [5]" $ do
+        it "A node 5 should be [5]" $ do
             flattenList (Node 5) `shouldBe` [5]
+        
+        it "The branch [] should be []" $ do
+            flattenList (Branch []) `shouldBe` ([] :: [Int])
+
+        it "The branch [5] should be [5]" $ do
+            flattenList (Branch [Node 5]) `shouldBe` [5]
