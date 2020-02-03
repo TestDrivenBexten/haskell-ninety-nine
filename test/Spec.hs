@@ -129,5 +129,5 @@ main = hspec $ do
         it "A list with the numbers [6,2,6] is a palindrome" $ do
             isPalindrome [6,2,6] `shouldBe` True
 
-        it "The phrase \"borrow or rob\" is a palindrome" $ do
-            isPalindrome "borrow or rob" `shouldBe` True
+        it "The word \"borroworrob\" is a palindrome" $ do
+            isPalindrome "borroworrob" `shouldBe` True
