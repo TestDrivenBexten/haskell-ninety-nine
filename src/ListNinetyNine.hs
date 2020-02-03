@@ -33,7 +33,9 @@ reverseList [x] = [x]
 reverseList [x,y] = [y,x]
 reverseList (x:xs) = (reverseList xs) ++ [x]
 
-isPalindrome :: [a] -> Bool
+isPalindrome :: (Eq a) => [a] -> Bool
 isPalindrome [] = True
-
+isPalindrome [x] = True
+isPalindrome [x,y] = x == y
+isPalindrome [x,y,z] = x == z
 isPalindrome (xs) = False

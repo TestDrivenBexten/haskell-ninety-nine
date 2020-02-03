@@ -83,8 +83,8 @@ main = hspec $ do
             reverseList "Haskell" `shouldBe` "lleksaH"
 
     describe "When checking for a palindome" $ do
-        it "An empty list is a palindrome" $ do
-            isPalindrome [] `shouldBe` True
+        it "An empty list should throw an exception" $ do
+            isPalindrome ([] :: [Int]) `shouldBe` True
 
         it "A list with one number is a palindrome" $ do
             isPalindrome [5] `shouldBe` True
