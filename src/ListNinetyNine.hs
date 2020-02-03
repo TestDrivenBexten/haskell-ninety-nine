@@ -41,5 +41,5 @@ isPalindrome [] = True
 -- isPalindrome [x,y,z] = x == z
 isPalindrome (xs) = False
 
-trimEnds :: String -> String
+trimEnds :: [a] -> [a]
 trimEnds x = drop 1 (take (numElements x - 1) x)
