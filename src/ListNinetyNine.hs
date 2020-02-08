@@ -9,7 +9,8 @@ module ListNinetyNine
       flattenList,
       Tree(Node,Branch),
       compress,
-      pack
+      pack,
+      encode
     ) where
 
 lastInList :: [a] -> a
@@ -61,3 +62,6 @@ pack :: (Eq a) => [a] -> [[a]]
 pack [] = []
 pack (x:xs) = [[x] ++ (fst splitTuple)] ++ pack (snd splitTuple)
   where splitTuple = span (== x) xs
+
+encode :: (Eq a) => [a] -> [(Int, a)]
+encode [] = []

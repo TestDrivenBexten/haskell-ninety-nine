@@ -184,3 +184,7 @@ main = hspec $ do
 
         it "aaaabccaadeeee should be [aaaa,b,cc,aa,d,eeee]" $ do
             pack "aaaabccaadeeee" `shouldBe` ["aaaa","b","cc","aa","d","eeee"]
+
+    describe "When encoding a list with duplicates" $ do
+        it "An empty list returns an empty list" $ do
+            encode ([] :: [Int]) `shouldBe` ([] :: [(Int,Int)])
