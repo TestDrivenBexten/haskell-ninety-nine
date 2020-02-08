@@ -49,4 +49,4 @@ flattenList :: Tree a -> [a]
 flattenList (Node x) = [x]
 flattenList (Branch []) = []
 flattenList (Branch [x]) = flattenList x
-flattenList (Branch (x:xs)) = flattenList x
+flattenList (Branch (x:xs)) = flattenList x ++ flattenList (head xs)

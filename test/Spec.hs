@@ -143,9 +143,9 @@ main = hspec $ do
         it "The [7,[],5] should be [7,5]" $ do
             flattenList (Branch [(Node 7),(Branch []),(Node 5)]) `shouldBe`[7]
 
-        it "The list [[6,9],[8,[3,1]]] should be [6,9,8,3,1]" $ do
+        it "The list [[6,9],[8,5,[2],[3,1]]] should be [6,9,8,3,1]" $ do
             flattenList (Branch [
                     Branch[(Node 6),(Node 9)],
-                    Branch[(Node 8),
+                    Branch[(Node 8),(Node 5),Branch[(Node 2)],
                         Branch[(Node 3),(Node 1)]]
-                ]) `shouldBe` [6,9,8,3,1]
+                ]) `shouldBe` [6,9,8,5,2,3,1]
