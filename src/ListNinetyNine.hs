@@ -71,4 +71,4 @@ encode xs = map (\x -> (numElements x,head x)) (pack xs)
 data CountStatus a = Single a | Multiple (Int, a)
   deriving (Eq, Show)
 encodeModified :: (Eq a) => [a] -> [CountStatus a]
-encodeModified xs = []
+encodeModified xs = map (\x -> if numElements x == 1 then Single (head x) else Multiple (numElements x,head x)) (pack xs)
