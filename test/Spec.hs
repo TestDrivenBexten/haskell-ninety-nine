@@ -188,3 +188,9 @@ main = hspec $ do
     describe "When encoding a list with duplicates" $ do
         it "An empty list returns an empty list" $ do
             encode ([] :: [Int]) `shouldBe` ([] :: [(Int,Int)])
+
+        it "The list [5] should return [(1,5)]" $ do
+            encode [5] `shouldBe` [(1,5)]
+
+        it "aaaabccaadeeee should be [(4,a),(1,b),(2,c),(2,a),(1,d),(4,e)]" $ do
+            encode "aaaabccaadeeee" `shouldBe` [(4,'a'),(1,'b'),(2,'c'),(2,'a'),(1,'d'),(4,'e')]
