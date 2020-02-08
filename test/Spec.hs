@@ -225,3 +225,16 @@ main = hspec $ do
 
         it "The list [1,2,3] should be [1,1,2,2,3,3]" $ do
             dupli [1,2,3] `shouldBe` [1,1,2,2,3,3]
+            
+    describe "When replicating the elements in a list" $ do
+        it "The empty list should be an empty list" $ do
+            repli ([] :: [Int]) 3 `shouldBe` ([] :: [Int])
+
+        it "Replicating the word abc 3 times should be aaabbbccc" $ do
+            repli "abc" 3 `shouldBe` "aaabbbccc"
+
+        it "Replicating [1,2,3] 2 times should be [1,1,2,2,3,3]" $ do
+            repli [1,2,3] 2 `shouldBe` [1,1,2,2,3,3]
+
+        it "Replicating [1,2,3] 0 times should be an empty list" $ do
+            repli [1,2,3] 0 `shouldBe` []
