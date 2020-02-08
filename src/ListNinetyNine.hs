@@ -13,7 +13,8 @@ module ListNinetyNine
       encode,
       CountStatus(Single,Multiple),
       encodeModified,
-      decodeModified
+      decodeModified,
+      encodeDirect
     ) where
 
 lastInList :: [a] -> a
@@ -79,3 +80,6 @@ decodeModified = concatMap helper
   where
     helper (Single x) = [x]
     helper (Multiple (n,x)) = replicate n x
+
+encodeDirect :: [a] -> [CountStatus a]
+encodeDirect xs = map (\x -> (Single x)) xs

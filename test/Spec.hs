@@ -208,3 +208,10 @@ main = hspec $ do
 
         it "[Multiple 4 'a',Single 'b',Multiple 2 'c',Multiple 2 'a',Single 'd',Multiple 4 'e'] should be aaaabccaadeeee" $ do
             decodeModified [Multiple (4,'a'),Single 'b',Multiple (2,'c'),Multiple (2,'a'),Single 'd',Multiple (4,'e')] `shouldBe` "aaaabccaadeeee"
+
+    describe "When encoding a list with duplicates without grouping" $ do
+        it "The list [5] should return [Single 5]" $ do
+            encodeDirect [5] `shouldBe` [Single 5]
+
+        it "aaaabccaadeeee should be [(4,a),(1,b),(2,c),(2,a),(1,d),(4,e)]" $ do
+            encodeDirect "aaaabccaadeeee" `shouldBe` [Multiple (4,'a'),Single 'b',Multiple (2,'c'),Multiple (2,'a'),Single 'd',Multiple (4,'e')]
