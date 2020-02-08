@@ -61,3 +61,4 @@ pack :: (Eq a) => [a] -> [[a]]
 pack [] = []
 pack [x] = [[x]]
 pack [x,y] = if x == y then [[x]] else [[x],[y]]
+pack (x:xs) = [[x]] ++ pack xs
