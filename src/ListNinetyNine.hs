@@ -81,5 +81,10 @@ decodeModified = concatMap helper
     helper (Single x) = [x]
     helper (Multiple (n,x)) = replicate n x
 
-encodeDirect :: [a] -> [CountStatus a]
-encodeDirect xs = map (\x -> (Single x)) xs
+encodeDirect :: (Eq a) => [a] -> [CountStatus a]
+encodeDirect [] = []
+encodeDirect xs = 
+  let (headList,tailList) = span (==(head xs)) xs
+    in helper headList ++ encodeDirect tailList
+    where
+      helper xs = if numElements xs > 1 then [Multiple (numElements xs,head xs)] else [Single (head xs)]
