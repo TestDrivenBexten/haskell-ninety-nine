@@ -149,3 +149,16 @@ main = hspec $ do
                     Branch[(Node 8),(Node 5),Branch[(Node 2)],
                         Branch[(Node 3),(Node 1)]]
                 ]) `shouldBe` [6,9,8,5,2,3,1]
+
+    describe "When compressing a list with duplicates" $ do
+        it "An empty list returns an empty list" $ do
+            compress ([] :: [Int]) `shouldBe` ([] :: [Int])
+        
+        it "The list [1] returns [1]" $ do
+            compress [1] `shouldBe` [1]
+
+        it "The list [1,1] returns [1]" $ do
+            compress [1,1] `shouldBe` [1]
+
+        it "The list [1,2] returns [1,2]" $ do
+            compress [1,2] `shouldBe` [1,2]

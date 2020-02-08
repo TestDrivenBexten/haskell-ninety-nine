@@ -7,7 +7,8 @@ module ListNinetyNine
       isPalindrome,
       trimEnds,
       flattenList,
-      Tree(Node,Branch)
+      Tree(Node,Branch),
+      compress
     ) where
 
 lastInList :: [a] -> a
@@ -48,3 +49,8 @@ data Tree a = Node a | Branch [Tree a]
 flattenList :: Tree a -> [a]
 flattenList (Node x) = [x]
 flattenList (Branch x) = concatMap flattenList x
+
+compress :: (Eq a) => [a] -> [a]
+compress [] = []
+compress [x] = [x]
+compress [x,y] = if x == y then [x] else [x,y]
