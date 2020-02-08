@@ -47,6 +47,4 @@ trimEnds x = drop 1 (take (numElements x - 1) x)
 data Tree a = Node a | Branch [Tree a]
 flattenList :: Tree a -> [a]
 flattenList (Node x) = [x]
-flattenList (Branch []) = []
-flattenList (Branch [x]) = flattenList x
-flattenList (Branch (x:xs)) = flattenList x ++ flattenList (head xs)
+flattenList (Branch x) = concatMap flattenList x
