@@ -162,3 +162,9 @@ main = hspec $ do
 
         it "The list [1,2] returns [1,2]" $ do
             compress [1,2] `shouldBe` [1,2]
+
+        it "The list [1,2,2] returns [1,2]" $ do
+            compress [1,2,2] `shouldBe` [1,2]
+
+        it "aaaabccaadeeee should be compressed to abcade" $ do
+            compress "aaaabccaadeeee" `shouldBe` "abcade"
