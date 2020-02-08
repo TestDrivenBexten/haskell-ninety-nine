@@ -64,4 +64,4 @@ pack (x:xs) = [[x] ++ (fst splitTuple)] ++ pack (snd splitTuple)
   where splitTuple = span (== x) xs
 
 encode :: (Eq a) => [a] -> [(Int, a)]
-encode xs = concatMap (\x -> [(numElements x,head x)]) (pack xs)
+encode xs = map (\x -> (numElements x,head x)) (pack xs)
