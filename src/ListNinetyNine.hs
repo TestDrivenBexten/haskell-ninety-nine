@@ -14,7 +14,8 @@ module ListNinetyNine
       CountStatus(Single,Multiple),
       encodeModified,
       decodeModified,
-      encodeDirect
+      encodeDirect,
+      dupli
     ) where
 
 lastInList :: [a] -> a
@@ -90,3 +91,6 @@ encodeDirect [] = []
 encodeDirect xs = 
   let (headList,tailList) = span (==(head xs)) xs
     in [listToCountStatus headList] ++ encodeDirect tailList
+
+dupli :: [a] -> [a]
+dupli xs = concatMap (\x -> [x,x]) xs

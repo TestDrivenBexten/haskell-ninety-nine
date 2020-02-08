@@ -215,3 +215,13 @@ main = hspec $ do
 
         it "aaaabccaadeeee should be [(4,a),(1,b),(2,c),(2,a),(1,d),(4,e)]" $ do
             encodeDirect "aaaabccaadeeee" `shouldBe` [Multiple (4,'a'),Single 'b',Multiple (2,'c'),Multiple (2,'a'),Single 'd',Multiple (4,'e')]
+
+    describe "When duplicating the elements in a list" $ do
+        it "An empty list should be an empty list" $ do
+            dupli ([] :: [Int]) `shouldBe` ([] :: [Int])
+
+        it "The word beer should be bbeeeerr" $ do
+            dupli "beer" `shouldBe` "bbeeeerr"
+
+        it "The list [1,2,3] should be [1,1,2,2,3,3]" $ do
+            dupli [1,2,3] `shouldBe` [1,1,2,2,3,3]
