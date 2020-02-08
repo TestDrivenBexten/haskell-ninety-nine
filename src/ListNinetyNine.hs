@@ -75,7 +75,7 @@ encodeModified :: (Eq a) => [a] -> [CountStatus a]
 encodeModified xs = map (\x -> if numElements x == 1 then Single (head x) else Multiple (numElements x,head x)) (pack xs)
 
 decodeModified :: [CountStatus a] -> [a]
-decodeModified xs = concatMap helper xs
+decodeModified = concatMap helper
   where
     helper (Single x) = [x]
     helper (Multiple (n,x)) = replicate n x
