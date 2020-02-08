@@ -179,5 +179,8 @@ main = hspec $ do
         it "The list [1,2] should be [[1],[2]]" $ do
             pack [1,2] `shouldBe` [[1],[2]]
 
+        it "The list [1,1] should be [[1,1]]" $ do
+            pack [1,1] `shouldBe` [[1,1]]
+
         it "aaaabccaadeeee should be [aaaa,b,cc,aa,d,eeee]" $ do
             pack "aaaabccaadeeee" `shouldBe` ["aaaa","b","cc","aa","d","eeee"]
