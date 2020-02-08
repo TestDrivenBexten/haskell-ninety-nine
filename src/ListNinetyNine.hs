@@ -8,7 +8,8 @@ module ListNinetyNine
       trimEnds,
       flattenList,
       Tree(Node,Branch),
-      compress
+      compress,
+      pack
     ) where
 
 lastInList :: [a] -> a
@@ -55,3 +56,8 @@ compress [] = []
 compress [x] = [x]
 compress [x,y] = if x == y then [x] else [x,y]
 compress (x:xs) = if x == head xs then compress xs else [x] ++ compress xs
+
+pack :: (Eq a) => [a] -> [[a]]
+pack [] = []
+pack [x] = [[x]]
+pack [x,y] = if x == y then [[x]] else [[x],[y]]

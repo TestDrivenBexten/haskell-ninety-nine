@@ -168,3 +168,13 @@ main = hspec $ do
 
         it "aaaabccaadeeee should be compressed to abcade" $ do
             compress "aaaabccaadeeee" `shouldBe` "abcade"
+
+    describe "When packing a list with duplicates" $ do
+        it "An empty list returns an empty list" $ do
+            pack ([] :: [Int]) `shouldBe` ([] :: [[Int]])
+
+        it "The list [1] should be [[1]]" $ do
+            pack [1] `shouldBe` [[1]]
+
+        it "The list [1,2] should be [[1],[2]]" $ do
+            pack [1,2] `shouldBe` [[1],[2]]
