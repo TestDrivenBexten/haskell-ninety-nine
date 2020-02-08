@@ -238,3 +238,23 @@ main = hspec $ do
 
         it "Replicating [1,2,3] 0 times should be an empty list" $ do
             repli [1,2,3] 0 `shouldBe` []
+    
+    describe "When dropping every nth element from a list" $ do
+        it "An n value of 0 should throw an error" $ do
+            evaluate (dropEvery [1,2,3] 0) `shouldThrow` anyException
+
+        describe "An n value of 1 should return an empty list" $ do
+            it "The word apple should be ''" $ do
+                dropEvery "apple" 1 `shouldBe` ""
+
+            it "The list [1,2,3] should be []" $ do
+                dropEvery [1,2,3] 1 `shouldBe` ([] :: [Int])
+
+        it "The word apple dropping every fifth element should be \"appl\"" $ do
+            dropEvery "apple" 5 `shouldBe` "appl"
+
+        it "The word apple dropping every sixth element should be \"apple\"" $ do
+            dropEvery "apple" 6 `shouldBe` "apple"
+
+        it "The sequence \"abcdefghik\" dropping every third element should be \"abdeghk\"" $ do
+            dropEvery "abcdefghik" 3 `shouldBe` "abdeghk"

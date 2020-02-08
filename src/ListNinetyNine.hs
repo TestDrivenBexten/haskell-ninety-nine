@@ -16,7 +16,8 @@ module ListNinetyNine
       decodeModified,
       encodeDirect,
       dupli,
-      repli
+      repli,
+      dropEvery
     ) where
 
 lastInList :: [a] -> a
@@ -98,3 +99,6 @@ dupli xs = concatMap (\x -> [x,x]) xs
 
 repli :: [a] -> Int -> [a]
 repli xs n = concatMap (\x -> take n (repeat x)) xs
+
+dropEvery :: [a] -> Int -> [a]
+dropEvery xs n = xs
