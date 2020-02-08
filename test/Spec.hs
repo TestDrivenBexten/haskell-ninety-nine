@@ -194,3 +194,10 @@ main = hspec $ do
 
         it "aaaabccaadeeee should be [(4,a),(1,b),(2,c),(2,a),(1,d),(4,e)]" $ do
             encode "aaaabccaadeeee" `shouldBe` [(4,'a'),(1,'b'),(2,'c'),(2,'a'),(1,'d'),(4,'e')]
+
+    describe "When encoding a list with statuses" $ do
+        it "abc should be [Single a, Single b, Single c]" $ do
+            encodeModified "abc" `shouldBe` [Single 'a',Single 'b',Single 'c']
+
+        it "aaaabccaadeeee should be [Multiple 4 'a',Single 'b',Multiple 2 'c',Multiple 2 'a',Single 'd',Multiple 4 'e']" $ do
+            encodeModified "aaaabccaadeeee" `shouldBe` [Multiple (4,'a'),Single 'b',Multiple (2,'c'),Multiple (2,'a'),Single 'd',Multiple (4,'e')]

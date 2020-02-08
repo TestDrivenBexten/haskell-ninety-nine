@@ -10,7 +10,9 @@ module ListNinetyNine
       Tree(Node,Branch),
       compress,
       pack,
-      encode
+      encode,
+      CountStatus(Single,Multiple),
+      encodeModified
     ) where
 
 lastInList :: [a] -> a
@@ -65,3 +67,8 @@ pack (x:xs) = [[x] ++ (fst splitTuple)] ++ pack (snd splitTuple)
 
 encode :: (Eq a) => [a] -> [(Int, a)]
 encode xs = map (\x -> (numElements x,head x)) (pack xs)
+
+data CountStatus a = Single a | Multiple (Int, a)
+  deriving (Eq, Show)
+encodeModified :: (Eq a) => [a] -> [CountStatus a]
+encodeModified xs = []
