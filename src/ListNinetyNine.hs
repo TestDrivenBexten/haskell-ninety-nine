@@ -72,8 +72,12 @@ encode xs = map (\x -> (numElements x,head x)) (pack xs)
 
 data CountStatus a = Single a | Multiple (Int, a)
   deriving (Eq, Show)
+
+listToCountStatus :: [a] -> CountStatus a
+listToCountStatus xs = if numElements xs == 1 then Single (head xs) else Multiple (numElements xs,head xs)
+
 encodeModified :: (Eq a) => [a] -> [CountStatus a]
-encodeModified xs = map (\x -> if numElements x == 1 then Single (head x) else Multiple (numElements x,head x)) (pack xs)
+encodeModified xs = map (\x -> listToCountStatus x) (pack xs)
 
 decodeModified :: [CountStatus a] -> [a]
 decodeModified = concatMap helper
@@ -85,6 +89,4 @@ encodeDirect :: (Eq a) => [a] -> [CountStatus a]
 encodeDirect [] = []
 encodeDirect xs = 
   let (headList,tailList) = span (==(head xs)) xs
-    in helper headList ++ encodeDirect tailList
-    where
-      helper xs = if numElements xs > 1 then [Multiple (numElements xs,head xs)] else [Single (head xs)]
+    in [listToCountStatus headList] ++ encodeDirect tailList
