@@ -269,3 +269,10 @@ main = hspec $ do
 
         it "The word \"terror\" should be \"error\" from 2 to 6" $ do
             sliceList "terror" 2 6 `shouldBe` "error"
+
+    describe "When rotating a list n places to the left" $ do
+        it "The word \"polka\" shifted left 2 becomes \"lkapo\"" $ do
+            rotateList "polka" 2 `shouldBe` "lkapo"
+
+        it "The list [3,5,7,11,13] shifted right 1 becomes [13,3,5,7,11]" $ do
+            rotateList [3,5,7,11,13] (-1) `shouldBe` [13,3,5,7,11]
