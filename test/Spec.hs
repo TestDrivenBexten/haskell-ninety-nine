@@ -240,10 +240,7 @@ main = hspec $ do
             repli [1,2,3] 0 `shouldBe` []
     
     describe "When dropping every nth element from a list" $ do
-        it "An n value of 0 should throw an error" $ do
-            evaluate (dropEvery [1,2,3] 0) `shouldThrow` anyException
-
-        describe "An n value of 1 should return an empty list" $ do
+        describe "An n value of 1 should return original list" $ do
             it "The word apple should be ''" $ do
                 dropEvery "apple" 1 `shouldBe` ""
 

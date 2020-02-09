@@ -101,4 +101,7 @@ repli :: [a] -> Int -> [a]
 repli xs n = concatMap (\x -> take n (repeat x)) xs
 
 dropEvery :: [a] -> Int -> [a]
-dropEvery xs n = xs
+dropEvery [] _ = []
+dropEvery xs n =
+  let (headList,tailList) = splitAt n xs
+    in take (n - 1) headList ++ dropEvery tailList n
