@@ -20,7 +20,8 @@ module ListNinetyNine
       dropEvery,
       splitList,
       sliceList,
-      rotateList
+      rotateList,
+      removeElement
     ) where
 
 lastInList :: [a] -> a
@@ -119,3 +120,6 @@ rotateList :: [a] -> Int -> [a]
 rotateList xs n =
   let (headList,tailList) = splitList xs (mod (length xs + n) (length xs))
     in tailList ++ headList
+
+removeElement :: Int -> [a] -> [a]
+removeElement n xs = take (n - 1) xs ++ drop n xs

@@ -276,3 +276,10 @@ main = hspec $ do
 
         it "The list [3,5,7,11,13] shifted right 1 becomes [13,3,5,7,11]" $ do
             rotateList [3,5,7,11,13] (-1) `shouldBe` [13,3,5,7,11]
+
+    describe "When removing an element in a list" $ do
+        it "The word \"splice\" should be \"slice\" removing the second letter" $ do
+            removeElement 2 "splice" `shouldBe` "slice"
+
+        it "The list [4,5,6] should be [4,5] removing the third element" $ do
+            removeElement 3 [4,5,6] `shouldBe` [4,5]
