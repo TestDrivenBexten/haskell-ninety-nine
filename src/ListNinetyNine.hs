@@ -17,7 +17,8 @@ module ListNinetyNine
       encodeDirect,
       dupli,
       repli,
-      dropEvery
+      dropEvery,
+      splitList
     ) where
 
 lastInList :: [a] -> a
@@ -105,3 +106,6 @@ dropEvery [] _ = []
 dropEvery xs n =
   let (headList,tailList) = splitAt n xs
     in take (n - 1) headList ++ dropEvery tailList n
+
+splitList :: [a] -> Int -> ([a],[a])
+splitList xs n = (take n xs, drop n xs)

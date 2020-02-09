@@ -255,3 +255,10 @@ main = hspec $ do
 
         it "The sequence \"abcdefghik\" dropping every third element should be \"abdeghk\"" $ do
             dropEvery "abcdefghik" 3 `shouldBe` "abdeghk"
+
+    describe "When splitting a list into two parts" $ do
+        it "The list [1,2,3] split at position 3 will be [[1,2,3],[]]" $ do
+            splitList [1,2,3] 3 `shouldBe` ([1,2,3],[])
+
+        it "abcdef split at position 3 will be abc and def" $ do
+            splitList "abcdef" 3 `shouldBe` ("abc","def")
