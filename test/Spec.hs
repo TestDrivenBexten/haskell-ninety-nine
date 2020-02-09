@@ -262,3 +262,10 @@ main = hspec $ do
 
         it "abcdef split at position 3 will be abc and def" $ do
             splitList "abcdef" 3 `shouldBe` ("abc","def")
+
+    describe "When slicing a subset from a list" $ do
+        it "The list [10,20,30,40,50] should be [20,30,40] from 2 to 4" $ do
+            sliceList [10,20,30,40,50] 2 4 `shouldBe` [20,30,40]
+
+        it "The word \"terror\" should be \"error\" from 2 to 6" $ do
+            sliceList "terror" 2 6 `shouldBe` "error"

@@ -18,7 +18,8 @@ module ListNinetyNine
       dupli,
       repli,
       dropEvery,
-      splitList
+      splitList,
+      sliceList
     ) where
 
 lastInList :: [a] -> a
@@ -109,3 +110,6 @@ dropEvery xs n =
 
 splitList :: [a] -> Int -> ([a],[a])
 splitList xs n = (take n xs, drop n xs)
+
+sliceList :: [a] -> Int -> Int -> [a]
+sliceList xs start end = drop (start - 1) (take end xs)
