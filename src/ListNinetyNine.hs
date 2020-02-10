@@ -23,8 +23,11 @@ module ListNinetyNine
       rotateList,
       removeElement,
       insertAt,
-      range
+      range,
+      randomSelect
     ) where
+
+import System.Random
 
 lastInList :: [a] -> a
 lastInList [] = error "Empty list"
@@ -133,3 +136,7 @@ insertAt x xs n =
 
 range :: Int -> Int -> [Int]
 range start end = drop (start -1) (take end (iterate (1+) 1))
+
+randomSelect :: [a] -> Int -> [a]
+randomSelect xs n = [kthInList xs randomIndex]
+  where (randomIndex,_) = randomR (1,length xs) (mkStdGen 0)

@@ -297,3 +297,7 @@ main = hspec $ do
 
         it "The range 4 to 9 should be [4,5,6,7,8,9]" $ do
             range 4 9 `shouldBe` [4,5,6,7,8,9]
+
+    describe "When selecting n elements randomly" $ do
+        it "Randomly selecting 3 from [1,2,3,4,5,6,7]" $ do
+            randomSelect (range 1 7) 3 `shouldBe` [1,2,3]
