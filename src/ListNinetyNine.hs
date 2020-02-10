@@ -24,7 +24,8 @@ module ListNinetyNine
       removeElement,
       insertAt,
       range,
-      randomSelect
+      randomSelect,
+      randomLotto
     ) where
 
 import System.Random
@@ -142,3 +143,6 @@ randomSelect xs n
     | n > 0 = [kthInList xs randomIndex] ++ randomSelect (removeElement randomIndex xs) (n - 1)
     | otherwise = []
   where (randomIndex,_) = randomR (1,length xs) (mkStdGen 0)
+
+randomLotto :: Int -> Int -> [Int]
+randomLotto n m = randomSelect (range 1 m) n

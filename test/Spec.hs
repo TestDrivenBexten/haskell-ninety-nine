@@ -301,3 +301,7 @@ main = hspec $ do
     describe "When selecting n elements randomly" $ do
         it "Randomly selecting 3 from [1,2,3,4,5,6,7]" $ do
             randomSelect (range 1 7) 3 `shouldBe` [1,7,5]
+
+    describe "When drawing n numbers from the set 1..M" $ do
+        it "Randomly select six elements up to 49" $ do
+            randomLotto 6 49 `shouldBe` [15,37,9,26,43,8]
