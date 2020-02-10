@@ -305,3 +305,10 @@ main = hspec $ do
     describe "When drawing n numbers from the set 1..M" $ do
         it "Randomly select six elements up to 49" $ do
             randomLotto 6 49 `shouldBe` [15,37,9,26,43,8]
+
+    describe "When shuffling a list" $ do
+        it "Shuffle 1 to 5" $ do
+            shuffleList (range 1 5) `shouldBe` [4,5,3,2,1]
+
+        it "Shuffle abcde" $ do
+            shuffleList "abcde" `shouldBe` "decba"

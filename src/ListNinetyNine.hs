@@ -25,7 +25,8 @@ module ListNinetyNine
       insertAt,
       range,
       randomSelect,
-      randomLotto
+      randomLotto,
+      shuffleList
     ) where
 
 import System.Random
@@ -146,3 +147,6 @@ randomSelect xs n
 
 randomLotto :: Int -> Int -> [Int]
 randomLotto n m = randomSelect (range 1 m) n
+
+shuffleList :: [a] -> [a]
+shuffleList xs = randomSelect xs (length xs)
