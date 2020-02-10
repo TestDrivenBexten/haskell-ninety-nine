@@ -290,3 +290,10 @@ main = hspec $ do
 
         it "The letter x inserted at 2" $ do
             insertAt 'X' "abcd" 2 `shouldBe` "aXbcd"
+
+    describe "When creating a range of integers" $ do
+        it "The range 1 to 3 should be [1,2,3]" $ do
+            range 1 3 `shouldBe` [1,2,3]
+
+        it "The range 4 to 9 should be [4,5,6,7,8,9]" $ do
+            range 4 9 `shouldBe` [4,5,6,7,8,9]

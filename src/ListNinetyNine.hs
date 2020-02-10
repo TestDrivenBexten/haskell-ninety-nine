@@ -22,7 +22,8 @@ module ListNinetyNine
       sliceList,
       rotateList,
       removeElement,
-      insertAt
+      insertAt,
+      range
     ) where
 
 lastInList :: [a] -> a
@@ -129,3 +130,6 @@ insertAt :: a -> [a] -> Int -> [a]
 insertAt x xs n =
   let (headList,tailList) = splitList xs (n - 1)
     in headList ++ [x] ++ tailList
+
+range :: Int -> Int -> [Int]
+range start end = drop (start -1) (take end (iterate (1+) 1))
