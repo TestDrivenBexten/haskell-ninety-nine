@@ -283,3 +283,10 @@ main = hspec $ do
 
         it "The list [4,5,6] should be [4,5] removing the third element" $ do
             removeElement 3 [4,5,6] `shouldBe` [4,5]
+
+    describe "When inserting an element into a list" $ do
+        it "The number 5 should be inserted into the empty list at 1" $ do
+            insertAt 5 [] 1 `shouldBe` [5]
+
+        it "The letter x inserted at 2" $ do
+            insertAt 'X' "abcd" 2 `shouldBe` "aXbcd"
