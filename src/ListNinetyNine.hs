@@ -138,5 +138,7 @@ range :: Int -> Int -> [Int]
 range start end = drop (start -1) (take end (iterate (1+) 1))
 
 randomSelect :: [a] -> Int -> [a]
-randomSelect xs n = [kthInList xs randomIndex]
+randomSelect xs n
+    | n > 0 = [kthInList xs randomIndex] ++ randomSelect (removeElement randomIndex xs) (n - 1)
+    | otherwise = []
   where (randomIndex,_) = randomR (1,length xs) (mkStdGen 0)

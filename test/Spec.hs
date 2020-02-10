@@ -300,4 +300,4 @@ main = hspec $ do
 
     describe "When selecting n elements randomly" $ do
         it "Randomly selecting 3 from [1,2,3,4,5,6,7]" $ do
-            randomSelect (range 1 7) 3 `shouldBe` [1,2,3]
+            randomSelect (range 1 7) 3 `shouldBe` [1,7,5]
