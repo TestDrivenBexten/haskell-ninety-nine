@@ -312,3 +312,16 @@ main = hspec $ do
 
         it "Shuffle abcde" $ do
             shuffleList "abcde" `shouldBe` "decba"
+
+    describe "When getting all combinations of a list" $ do
+        it "k=1 for abc should have 3 permutations" $ do
+            combinations 1 "abc" `shouldBe` ["a","b","c"]
+
+        it "k=2 for abc should have 3 permutations" $ do
+            combinations 2 "abc" `shouldBe` ["ab","ac","bc"]
+
+        it "k=2 for abcd should have 6 permutations" $ do
+            length (combinations 2 "abcd") `shouldBe` 6
+
+        it "k=3 for a list of 12 should have 220 permutations" $ do
+            length (combinations 3 (range 1 12)) `shouldBe` 220

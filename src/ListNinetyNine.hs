@@ -26,7 +26,8 @@ module ListNinetyNine
       range,
       randomSelect,
       randomLotto,
-      shuffleList
+      shuffleList,
+      combinations
     ) where
 
 import System.Random
@@ -150,3 +151,10 @@ randomLotto n m = randomSelect (range 1 m) n
 
 shuffleList :: [a] -> [a]
 shuffleList xs = randomSelect xs (length xs)
+
+combinations :: Int -> [a] -> [[a]]
+combinations 1 [x] = [[x]]
+combinations 1 [x,y] = [[x],[y]]
+combinations n (x:xs)
+  | n > 1 = map (x:) (combinations (n - 1) xs)
+  | otherwise = [[x]]
