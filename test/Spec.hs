@@ -325,3 +325,10 @@ main = hspec $ do
 
         it "k=3 for a list of 12 should have 220 permutations" $ do
             length (combinations 3 (range 1 12)) `shouldBe` 220
+
+    describe "When getting all disjoint subsets" $ do
+        it "k=3 for 123 should give 123" $ do
+            groupDisjoint [3] [1,2,3] `shouldBe` [[[1,2,3]]]
+
+        it "group (1,2) for [1,2,3] should give [[[1],[2,3]],[]]" $ do
+            groupDisjoint [1,2] [1,2,3] `shouldBe` [[[1],[2,3]],[[2],[1,3]],[[3],[1,2]]]

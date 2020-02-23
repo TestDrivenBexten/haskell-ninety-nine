@@ -27,7 +27,8 @@ module ListNinetyNine
       randomSelect,
       randomLotto,
       shuffleList,
-      combinations
+      combinations,
+      groupDisjoint
     ) where
 
 import System.Random
@@ -158,3 +159,6 @@ combinations n (x:xs)
   | n < length (x:xs) = map (x:) (combinations (n - 1) xs) ++ combinations n xs
   | n == length (x:xs) = [x:xs]
   | otherwise = [[]]
+
+groupDisjoint :: [Int] -> [a] -> [[[a]]]
+groupDisjoint groupList xs = [[[]]]
