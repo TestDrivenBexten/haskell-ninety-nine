@@ -327,8 +327,11 @@ main = hspec $ do
             length (combinations 3 (range 1 12)) `shouldBe` 220
 
     describe "When getting all disjoint subsets" $ do
-        it "k=3 for 123 should give 123" $ do
+        it "group (3) for 123 should give 123" $ do
             groupDisjoint [3] [1,2,3] `shouldBe` [[[1,2,3]]]
+        
+        it "group (3) for [ant,bat,cat] should give [ant,bat,cat]" $ do
+            groupDisjoint [3] ["ant","bat","cat"] `shouldBe` [[["ant","bat","cat"]]]
 
         it "group (1,2) for [1,2,3] should give [[[1],[2,3]],[]]" $ do
             groupDisjoint [1,2] [1,2,3] `shouldBe` [[[1],[2,3]],[[2],[1,3]],[[3],[1,2]]]
