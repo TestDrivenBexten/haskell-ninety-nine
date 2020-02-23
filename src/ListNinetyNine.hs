@@ -153,9 +153,7 @@ shuffleList :: [a] -> [a]
 shuffleList xs = randomSelect xs (length xs)
 
 combinations :: Int -> [a] -> [[a]]
-combinations 1 [x] = [[x]]
-combinations 1 [x,y] = [[x],[y]]
-combinations 2 [x,y] = [[x,y]]
+combinations 1 xs = map (\x -> [x]) xs
 combinations n (x:xs)
-  | n >= length xs = map (x:) (combinations (n - 1) xs) ++ combinations n xs
-  | otherwise = [[x]]
+  | n < length (x:xs) = map (x:) (combinations (n - 1) xs) ++ combinations n xs
+  | otherwise = [[]]
