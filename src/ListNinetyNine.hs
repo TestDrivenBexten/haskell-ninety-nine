@@ -161,4 +161,4 @@ combinations n (x:xs)
   | otherwise = [[]]
 
 groupDisjoint :: [Int] -> [a] -> [[[a]]]
-groupDisjoint groupList xs = [[[]]]
+groupDisjoint groupSizes xs = [combinations (head groupSizes) xs]
