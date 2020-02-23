@@ -157,5 +157,5 @@ combinations 1 [x] = [[x]]
 combinations 1 [x,y] = [[x],[y]]
 combinations 2 [x,y] = [[x,y]]
 combinations n (x:xs)
-  | n > 1 = map (x:) (combinations (n - 1) xs) ++ combinations n xs
+  | n >= length xs = map (x:) (combinations (n - 1) xs) ++ combinations n xs
   | otherwise = [[x]]
