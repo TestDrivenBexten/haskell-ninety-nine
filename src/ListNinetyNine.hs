@@ -175,4 +175,3 @@ has :: (Eq a) => a -> [a] -> Bool
 has x xs
   | length xs > 1 = or [x == head xs, has x (tail xs)]
   | length xs == 1 = x == head xs
-  | otherwise = has x (tail xs)
