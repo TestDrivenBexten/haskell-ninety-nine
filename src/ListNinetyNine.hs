@@ -162,7 +162,7 @@ combinations n (x:xs)
 
 groupDisjoint :: (Eq a) => [Int] -> [a] -> [[[a]]]
 groupDisjoint groupSizes xs 
-  | length groupSizes > 1 = [remainders]
+  | length groupSizes > 1 = map (\x -> [x, head remainders]) disjoint
   | otherwise = [disjoint]
   where
     disjoint = combinations (head groupSizes) xs
