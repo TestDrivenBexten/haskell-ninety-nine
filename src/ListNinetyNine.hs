@@ -160,9 +160,15 @@ combinations n (x:xs)
   | n == length (x:xs) = [x:xs]
   | otherwise = [[]]
 
-groupDisjoint :: [Int] -> [a] -> [[[a]]]
+groupDisjoint :: (Eq a) => [Int] -> [a] -> [[[a]]]
 groupDisjoint groupSizes xs 
-  | length groupSizes > 1 = [disjoint]
+  | length groupSizes > 1 = [remainders]
   | otherwise = [disjoint]
   where
     disjoint = combinations (head groupSizes) xs
+    remainders = map (\x -> filter (\y -> not(has y x)) xs) disjoint
+
+has :: (Eq a) => a -> [a] -> Bool
+has x xs
+  | length xs == 1 = x == head xs
+  | otherwise = has x (tail xs)
