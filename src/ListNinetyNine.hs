@@ -162,11 +162,14 @@ combinations n (x:xs)
 
 groupDisjoint :: (Eq a) => [Int] -> [a] -> [[[a]]]
 groupDisjoint groupSizes xs 
-  | length groupSizes > 1 = map (\x -> [x, head remainders]) disjoint
+  | length groupSizes > 1 = map (\x -> [x, removeElements x xs]) disjoint
   | otherwise = [disjoint]
   where
     disjoint = combinations (head groupSizes) xs
     remainders = map (\x -> filter (\y -> not(has y x)) xs) disjoint
+
+removeElements :: (Eq a) => [a] -> [a] -> [a]
+removeElements removeList targetList = filter (\y -> not(has y removeList)) targetList
 
 has :: (Eq a) => a -> [a] -> Bool
 has x xs
