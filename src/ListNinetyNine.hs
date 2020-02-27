@@ -164,9 +164,8 @@ groupDisjoint :: (Eq a) => [Int] -> [a] -> [[[a]]]
 groupDisjoint [] xs = [[xs]]
 groupDisjoint [n] xs = [combinations n xs]
 groupDisjoint (n:ns) xs =
-  map (\x -> [x] ++ [removeElements x xs]) rs 
-  where
-    rs = combinations n xs
+  [ [rs] ++ gs | rs <- combinations n xs,
+           gs <- groupDisjoint ns (removeElements rs xs)]
 
 removeElements :: (Eq a) => [a] -> [a] -> [a]
 removeElements removeList targetList = filter (\y -> not(has y removeList)) targetList
