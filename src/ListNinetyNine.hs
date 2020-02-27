@@ -161,13 +161,11 @@ combinations n (x:xs)
   | otherwise = [[]]
 
 groupDisjoint :: (Eq a) => [Int] -> [a] -> [[[a]]]
-groupDisjoint groupSizes xs 
-  | length groupSizes > 1 = map (\headElem -> headElem ) tailRemainderList
-  -- | length groupSizes > 1 = map (\x -> [x, removeElements x xs]) disjoint ++ (groupDisjoint (tail groupSizes) (removeElements x xs))
-  | otherwise = [headjoint]
+groupDisjoint [] xs = [[xs]]
+groupDisjoint [n] xs = [combinations n xs]
+groupDisjoint (n:ns) xs = map (\x -> [x] ++ [removeElements x xs]) rs 
   where
-    tailRemainderList = map (\headElements -> [headElements,removeElements headElements xs]) headjoint
-    headjoint = combinations (head groupSizes) xs
+    rs = combinations n xs
 
 removeElements :: (Eq a) => [a] -> [a] -> [a]
 removeElements removeList targetList = filter (\y -> not(has y removeList)) targetList
