@@ -166,7 +166,6 @@ groupDisjoint groupSizes xs
   | otherwise = [disjoint]
   where
     disjoint = combinations (head groupSizes) xs
-    remainders = map (\x -> filter (\y -> not(has y x)) xs) disjoint
 
 removeElements :: (Eq a) => [a] -> [a] -> [a]
 removeElements removeList targetList = filter (\y -> not(has y removeList)) targetList
