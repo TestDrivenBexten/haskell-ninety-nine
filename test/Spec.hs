@@ -333,7 +333,7 @@ main = hspec $ do
         it "group (3) for [ant,bat,cat] should give [ant,bat,cat]" $ do
             groupDisjoint [3] ["ant","bat","cat"] `shouldBe` [[["ant","bat","cat"]]]
 
-        it "group (1,2) for [1,2,3] should give [[[1],[2,3]],[]]" $ do
+        it "group (1,2) for [1,2,3] should give [[[1],[2,3]],[[2],[1,3]],[[3],[1,2]]]" $ do
             groupDisjoint [1,2] [1,2,3] `shouldBe` [[[1],[2,3]],[[2],[1,3]],[[3],[1,2]]]
 
         it "group (2,3,4) for [abcdefghi] should give 1260 permutations" $ do

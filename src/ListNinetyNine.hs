@@ -163,7 +163,8 @@ combinations n (x:xs)
 groupDisjoint :: (Eq a) => [Int] -> [a] -> [[[a]]]
 groupDisjoint [] xs = [[xs]]
 groupDisjoint [n] xs = [combinations n xs]
-groupDisjoint (n:ns) xs = map (\x -> [x] ++ [removeElements x xs]) rs 
+groupDisjoint (n:ns) xs =
+  map (\x -> [x] ++ [removeElements x xs]) rs 
   where
     rs = combinations n xs
 
