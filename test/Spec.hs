@@ -348,3 +348,10 @@ main = hspec $ do
 
         it "The list abc,de,fgh,de,ijkl,mn,o should be o,de,de,mn,abc,fgh,ijkl" $ do
             lsort ["abc","de","fgh","de","ijkl","mn","o"] `shouldBe` ["o","de","de","mn","abc","fgh","ijkl"]
+
+    describe "When sorting lists by length" $ do
+        it "The list be,a,do should be a,be,do" $ do
+            lfsort ["be","a","do"] `shouldBe` ["a","be","do"]
+
+        it "The list abc,de,fgh,de,ijkl,mn,o should be ijkl,o,abc,fgh,de,de,mn" $ do
+            lfsort ["abc","de","fgh","de","ijkl","mn","o"] `shouldBe` ["ijkl","o","abc","fgh","de","de","mn"]

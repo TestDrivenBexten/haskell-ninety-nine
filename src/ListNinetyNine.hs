@@ -29,7 +29,8 @@ module ListNinetyNine
       shuffleList,
       combinations,
       groupDisjoint,
-      lsort
+      lsort,
+      lfsort
     ) where
 
 import System.Random
@@ -182,3 +183,10 @@ lsort (x:xs) = lsort shortSubList ++ [x] ++ lsort longSubList
   where
     shortSubList = filter (\y -> length y < length x) xs
     longSubList = filter (\y -> length y >= length x) xs
+
+lfsort :: [[a]] -> [[a]]
+lfsort [] = []
+lfsort xs = xs
+  where
+    rareSublist = filter (\(x,y) -> x == y) sublistFrequency
+    sublistFrequency = encode (map (\y -> length y) (lsort xs))
