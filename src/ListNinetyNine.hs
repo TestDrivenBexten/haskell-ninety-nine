@@ -28,7 +28,8 @@ module ListNinetyNine
       randomLotto,
       shuffleList,
       combinations,
-      groupDisjoint
+      groupDisjoint,
+      lsort
     ) where
 
 import System.Random
@@ -174,3 +175,10 @@ has :: (Eq a) => a -> [a] -> Bool
 has x xs
   | length xs > 1 = or [x == head xs, has x (tail xs)]
   | length xs == 1 = x == head xs
+
+lsort :: [[a]] -> [[a]]
+lsort [] = []
+lsort [x,y]
+  | length x > length y = [y,x]
+  | otherwise = [x,y]
+lsort (x:xs) = [x]

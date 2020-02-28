@@ -339,3 +339,12 @@ main = hspec $ do
         it "group (2,3,4) for [abcdefghi] should give 1260 permutations" $ do
             length (groupDisjoint [2,3,4] "abcdefghi") `shouldBe` 1260
 
+    describe "When sorting lists by length" $ do
+        it "The list a,do should be a,do" $ do
+            lsort ["a","do"] `shouldBe` ["a","do"]
+
+        it "The list do,a should be a,do" $ do
+            lsort ["do","a"] `shouldBe` ["a","do"]
+
+        it "The list abc,de,fgh,de,ijkl,mn,o should be o,de,de,mn,abc,fgh,ijkl" $ do
+            lsort ["abc","de","fgh","de","ijkl","mn","o"] `shouldBe` ["o","de","de","mn","abc","fgh","ijkl"]
