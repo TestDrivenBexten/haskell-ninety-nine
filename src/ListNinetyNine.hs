@@ -178,7 +178,7 @@ has x xs
 
 lsort :: [[a]] -> [[a]]
 lsort [] = []
-lsort [x,y]
-  | length x > length y = [y,x]
-  | otherwise = [x,y]
-lsort (x:xs) = [x]
+lsort (x:xs) = lsort shortSubList ++ [x] ++ lsort longSubList
+  where
+    shortSubList = filter (\y -> length y < length x) xs
+    longSubList = filter (\y -> length y >= length x) xs
