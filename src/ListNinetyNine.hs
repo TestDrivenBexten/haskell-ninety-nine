@@ -186,7 +186,9 @@ lsort (x:xs) = lsort shortSubList ++ [x] ++ lsort longSubList
 
 lfsort :: [[a]] -> [[a]]
 lfsort [] = []
-lfsort xs = xs
+lfsort (x:xs) = rareSublist ++ [x]
   where
-    rareSublist = filter (\(x,y) -> x == y) sublistFrequency
-    sublistFrequency = encode (map (\y -> length y) (lsort xs))
+    rareSublist = filter (\y -> has (length y) rareLengthList) xs
+    rareLengthList = map (\x -> snd x) (filter (\(frequency,listLength) -> frequency < currentListFrequency) lengthFrequencies)
+    currentListFrequency = fst (head ( filter (\(_,y) -> y == length x) lengthFrequencies))
+    lengthFrequencies = encode (map (\y -> length y) (lsort (x:xs)))
