@@ -48,3 +48,13 @@ spec = do
 
         it "11 should have 10 coprimes" $ do
             totient 11 `shouldBe` 10
+
+    describe "When finding prime factors" $ do
+        it "5 should be [5]" $ do
+            primeFactors 5 `shouldBe` [5]
+            
+        it "15 should be [3,5]" $ do
+            primeFactors 15 `shouldBe` [3,5]
+            
+        it "315 should be [3,3,5,7]" $ do
+            primeFactors 315 `shouldBe` [3,3,5,7]
