@@ -20,3 +20,16 @@ spec = do
             
         it "Thirteen is prime" $ do
             isPrime 13 `shouldBe` True
+
+    describe "When finding the greatest common divisor of two numbers" $ do
+        it "GCD of 3 and 6 should be 3" $ do
+            myGcd 3 6 `shouldBe` 3
+
+        it "GCD of 36 and 63 should be 9" $ do
+            myGcd 36 63 `shouldBe` 9
+        
+        it "GCD of 63 and 36 should be 9" $ do
+            myGcd 63 36 `shouldBe` 9
+        
+        it "GCD of 4 and 4 should be 4" $ do
+            myGcd 4 4 `shouldBe` 4
