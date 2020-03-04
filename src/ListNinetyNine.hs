@@ -173,6 +173,7 @@ removeElements :: (Eq a) => [a] -> [a] -> [a]
 removeElements removeList targetList = filter (\y -> not(has y removeList)) targetList
 
 has :: (Eq a) => a -> [a] -> Bool
+has x [] = False
 has x xs
   | length xs > 1 = or [x == head xs, has x (tail xs)]
   | length xs == 1 = x == head xs
@@ -186,10 +187,12 @@ lsort (x:xs) = lsort shortSubList ++ [x] ++ lsort longSubList
 
 lfsort :: [[a]] -> [[a]]
 lfsort [] = []
-lfsort (x:xs) = rareSublist ++ [x] ++ commonSublist
+lfsort (x:xs) = rareSublist ++ [x] ++ currentSublist ++ commonSublist
   where
+    currentSublist = filter (\y -> has (length y) currentLengthList) xs
+    currentLengthList = map (\x -> snd x) (filter (\(frequency,listLength) -> frequency == currentListFrequency) lengthFrequencies)
     commonSublist = filter (\y -> has (length y) commonLengthList) xs
-    commonLengthList = map (\x -> snd x) (filter (\(frequency,listLength) -> frequency >= currentListFrequency) lengthFrequencies)
+    commonLengthList = map (\x -> snd x) (filter (\(frequency,listLength) -> frequency > currentListFrequency) lengthFrequencies)
     rareSublist = filter (\y -> has (length y) rareLengthList) xs
     rareLengthList = map (\x -> snd x) (filter (\(frequency,listLength) -> frequency < currentListFrequency) lengthFrequencies)
     currentListFrequency = fst (head ( filter (\(_,y) -> y == length x) lengthFrequencies))
