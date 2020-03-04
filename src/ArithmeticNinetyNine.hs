@@ -6,7 +6,8 @@ module ArithmeticNinetyNine
         totient,
         primeFactors,
         primeFactorsMult,
-        eulerTotientImproved
+        eulerTotientImproved,
+        primeRange
     ) where
 
 import ListNinetyNine
@@ -47,3 +48,6 @@ eulerTotientImproved x = foldl (*) 1 phiFactorList
     where
         phiFactorList = map (\y -> (fst y - 1) * (fst y ^ (snd y - 1))) primeFactorList
         primeFactorList = primeFactorsMult x
+
+primeRange :: Int -> Int -> [Int]
+primeRange x y = filter (\z -> isPrime z) (range x y)

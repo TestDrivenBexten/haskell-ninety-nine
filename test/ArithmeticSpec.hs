@@ -76,3 +76,12 @@ spec = do
 
         it "11 should have 10 coprimes" $ do
             eulerTotientImproved 11 `shouldBe` 10
+
+    -- Skip problem 38
+
+    describe "When building a list of prime numbers" $ do
+        it "The range 10 to 20 should give [11,13,17,19]" $ do
+            primeRange 10 20 `shouldBe` [11,13,17,19]
+
+        it "The range 3 to 9 should give [3,5,7]" $ do
+            primeRange 3 9 `shouldBe` [3,5,7]
