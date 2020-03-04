@@ -58,3 +58,13 @@ spec = do
             
         it "315 should be [3,3,5,7]" $ do
             primeFactors 315 `shouldBe` [3,3,5,7]
+
+    describe "When finding frequency of prime numbers" $ do
+        it "5 should be [5]" $ do
+            primeFactorsMult 5 `shouldBe` [(5,1)]
+            
+        it "15 should be [3,5]" $ do
+            primeFactorsMult 15 `shouldBe` [(3,1),(5,1)]
+            
+        it "315 should be [3,3,5,7]" $ do
+            primeFactorsMult 315 `shouldBe` [(3,2),(5,1),(7,1)]

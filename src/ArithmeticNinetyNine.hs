@@ -4,7 +4,8 @@ module ArithmeticNinetyNine
         myGcd,
         coprime,
         totient,
-        primeFactors
+        primeFactors,
+        primeFactorsMult
     ) where
 
 import ListNinetyNine
@@ -36,3 +37,6 @@ primeFactors x
     where
         firstDivisor = head divisors
         divisors = filter (\y -> x `mod` y == 0) (range 2 x)
+
+primeFactorsMult :: Int -> [(Int,Int)]
+primeFactorsMult x = map (\x -> (snd x,fst x)) (encode (primeFactors x))
