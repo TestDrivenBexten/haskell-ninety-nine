@@ -85,3 +85,10 @@ spec = do
 
         it "The range 3 to 9 should give [3,5,7]" $ do
             primeRange 3 9 `shouldBe` [3,5,7]
+
+    describe "When working with Goldbach's conjecture" $ do
+        it "The number 28 should give (5, 23)" $ do
+            goldbach 28 `shouldBe` (5,23)
+
+        it "The number 10 should give (3, 7)" $ do
+            goldbach 10 `shouldBe` (3,7)

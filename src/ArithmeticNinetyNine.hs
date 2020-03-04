@@ -7,7 +7,8 @@ module ArithmeticNinetyNine
         primeFactors,
         primeFactorsMult,
         eulerTotientImproved,
-        primeRange
+        primeRange,
+        goldbach
     ) where
 
 import ListNinetyNine
@@ -51,3 +52,9 @@ eulerTotientImproved x = foldl (*) 1 phiFactorList
 
 primeRange :: Int -> Int -> [Int]
 primeRange x y = filter (\z -> isPrime z) (range x y)
+
+goldbach :: Int -> (Int, Int)
+goldbach x = head (filter (\pair -> isPrime (fst pair) && isPrime (snd pair)) primePairList)
+    where
+        primePairList = map (\y -> (y,x - y)) primeList
+        primeList = primeRange 2 x
