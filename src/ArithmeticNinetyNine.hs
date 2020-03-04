@@ -1,7 +1,8 @@
 module ArithmeticNinetyNine
     ( 
         isPrime,
-        myGcd
+        myGcd,
+        coprime
     ) where
 
 import ListNinetyNine    
@@ -18,4 +19,6 @@ myGcd x y
     | x == y = x
     | x > y = myGcd y (x `mod` y)
     | x < y = myGcd x (y `mod` x)
-        
+
+coprime :: Int -> Int -> Bool
+coprime x y = myGcd x y == 1

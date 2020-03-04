@@ -33,3 +33,10 @@ spec = do
         
         it "GCD of 4 and 4 should be 4" $ do
             myGcd 4 4 `shouldBe` 4
+
+    describe "When checking two numbers as coprimes" $ do
+        it "35 and 64 are coprime" $ do
+            coprime 35 64 `shouldBe` True
+
+        it "36 and 63 are not coprime" $ do
+            coprime 36 63 `shouldBe` False
