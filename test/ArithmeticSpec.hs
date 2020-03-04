@@ -68,3 +68,11 @@ spec = do
             
         it "315 should be [3,3,5,7]" $ do
             primeFactorsMult 315 `shouldBe` [(3,2),(5,1),(7,1)]
+
+    describe "When counting coprime numbers" $ do
+        -- 10 : 1, 3, 7, 9
+        it "10 should have 4 coprimes" $ do
+            eulerTotientImproved 10 `shouldBe` 4
+
+        it "11 should have 10 coprimes" $ do
+            eulerTotientImproved 11 `shouldBe` 10

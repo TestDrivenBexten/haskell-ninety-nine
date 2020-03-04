@@ -5,7 +5,8 @@ module ArithmeticNinetyNine
         coprime,
         totient,
         primeFactors,
-        primeFactorsMult
+        primeFactorsMult,
+        eulerTotientImproved
     ) where
 
 import ListNinetyNine
@@ -40,3 +41,9 @@ primeFactors x
 
 primeFactorsMult :: Int -> [(Int,Int)]
 primeFactorsMult x = map (\x -> (snd x,fst x)) (encode (primeFactors x))
+
+eulerTotientImproved :: Int -> Int
+eulerTotientImproved x = foldl (*) 1 phiFactorList
+    where
+        phiFactorList = map (\y -> (fst y - 1) * (fst y ^ (snd y - 1))) primeFactorList
+        primeFactorList = primeFactorsMult x
