@@ -5,7 +5,7 @@ import Test.Hspec
 import ListNinetyNine
 
 spec :: Spec
-spec = hspec $ do
+spec = do
     describe "When finding the last element of a list" $ do
         describe "Given an empty list" $ do
             it "Should throw an error" $ do
