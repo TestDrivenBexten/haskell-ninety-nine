@@ -2,7 +2,8 @@ module ArithmeticNinetyNine
     ( 
         isPrime,
         myGcd,
-        coprime
+        coprime,
+        totient
     ) where
 
 import ListNinetyNine    
@@ -22,3 +23,6 @@ myGcd x y
 
 coprime :: Int -> Int -> Bool
 coprime x y = myGcd x y == 1
+
+totient :: Int -> Int
+totient x = length (filter (\y -> coprime x y) (range 1 (x - 1)))

@@ -40,3 +40,11 @@ spec = do
 
         it "36 and 63 are not coprime" $ do
             coprime 36 63 `shouldBe` False
+
+    describe "When counting coprime numbers" $ do
+        -- 10 : 1, 3, 7, 9
+        it "10 should have 4 coprimes" $ do
+            totient 10 `shouldBe` 4
+
+        it "11 should have 10 coprimes" $ do
+            totient 11 `shouldBe` 10
