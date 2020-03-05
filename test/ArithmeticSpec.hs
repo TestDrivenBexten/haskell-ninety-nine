@@ -96,3 +96,6 @@ spec = do
     describe "When working with Goldbach lists" $ do
         it "Should have 4 pairs from 9 to 16" $ do
             goldbachList 9 16 `shouldBe` [(3,7),(5,7),(3,11),(3,13)]
+
+        it "Should have 4 pairs for 4 to 2000 with a minimum of 50" $ do
+            goldbachListMin 4 2000 50 `shouldBe` [(73,919),(61,1321),(67,1789),(61,1867)]

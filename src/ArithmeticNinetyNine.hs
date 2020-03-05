@@ -9,7 +9,8 @@ module ArithmeticNinetyNine
         eulerTotientImproved,
         primeRange,
         goldbach,
-        goldbachList
+        goldbachList,
+        goldbachListMin
     ) where
 
 import ListNinetyNine
@@ -64,3 +65,6 @@ goldbachList :: Int -> Int -> [(Int,Int)]
 goldbachList start end = map goldbach evenList
     where
         evenList = filter (\x -> x `mod` 2 == 0) (range start end)
+
+goldbachListMin :: Int -> Int -> Int -> [(Int,Int)]
+goldbachListMin start end min = filter (\pair -> (fst pair > min) && (snd pair > min)) (goldbachList start end)
