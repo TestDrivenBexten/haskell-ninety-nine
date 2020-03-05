@@ -92,3 +92,7 @@ spec = do
 
         it "The number 10 should give (3, 7)" $ do
             goldbach 10 `shouldBe` (3,7)
+
+    describe "When working with Goldbach lists" $ do
+        it "Should have 4 pairs from 9 to 16" $ do
+            goldbachList 9 16 `shouldBe` [(3,7),(5,7),(3,11),(3,13)]

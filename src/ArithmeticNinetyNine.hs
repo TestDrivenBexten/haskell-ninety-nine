@@ -8,7 +8,8 @@ module ArithmeticNinetyNine
         primeFactorsMult,
         eulerTotientImproved,
         primeRange,
-        goldbach
+        goldbach,
+        goldbachList
     ) where
 
 import ListNinetyNine
@@ -58,3 +59,8 @@ goldbach x = head (filter (\pair -> isPrime (fst pair) && isPrime (snd pair)) pr
     where
         primePairList = map (\y -> (y,x - y)) primeList
         primeList = primeRange 2 x
+
+goldbachList :: Int -> Int -> [(Int,Int)]
+goldbachList start end = map goldbach evenList
+    where
+        evenList = filter (\x -> x `mod` 2 == 0) (range start end)
