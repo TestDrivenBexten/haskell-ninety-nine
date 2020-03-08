@@ -5,7 +5,8 @@ module LogicNinetyNine
         myNor,
         myXor,
         myImplies,
-        myEqual
+        myEqual,
+        gray
     ) where
 
 myAnd :: Bool -> Bool -> Bool
@@ -29,3 +30,8 @@ myImplies a b = myOr (not a) b
 
 myEqual :: Bool -> Bool -> Bool
 myEqual a b = a == b
+
+gray :: Int -> [String]
+gray 0 = []
+gray 1 = ["0","1"]
+gray x = [ first ++ end | first <- gray 1, end <- gray (x - 1)]

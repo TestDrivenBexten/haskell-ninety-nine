@@ -74,3 +74,10 @@ spec = do
             myEqual False True `shouldBe` False
         it "F F Should return T" $ do
             myEqual False False `shouldBe` True
+
+    describe "When finding gray codes" $ do
+        it "C=1 should give [0,1]" $ do
+            gray 1 `shouldBe` ["0","1"]
+            
+        it "C=3 should give [000,001,010,011,100,101,110,111]" $ do
+            gray 3 `shouldBe` ["000","001","010","011","100","101","110","111"]
