@@ -44,3 +44,13 @@ spec = do
             myNor False True `shouldBe` False
         it "F F Should return T" $ do
             myNor False False `shouldBe` True
+                
+    describe "Given the XOR operator" $ do
+        it "T T Should return T" $ do
+            myXor True True `shouldBe` True
+        it "T F Should return F" $ do
+            myXor True False `shouldBe` False
+        it "F T Should return F" $ do
+            myXor False True `shouldBe` False
+        it "F F Should return F" $ do
+            myXor False False `shouldBe` False

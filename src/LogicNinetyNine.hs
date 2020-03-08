@@ -2,7 +2,8 @@ module LogicNinetyNine
     ( myAnd,
         myOr,
         myNand,
-        myNor
+        myNor,
+        myXor
     ) where
 
 myAnd :: Bool -> Bool -> Bool
@@ -16,3 +17,6 @@ myNand a b = not (myAnd a b)
 
 myNor :: Bool -> Bool -> Bool
 myNor a b = not (myOr a b)
+
+myXor :: Bool -> Bool -> Bool
+myXor a b = not (myNand a b)
