@@ -54,3 +54,13 @@ spec = do
             myXor False True `shouldBe` False
         it "F F Should return F" $ do
             myXor False False `shouldBe` False
+    
+    describe "Given the IMPLIES operator" $ do
+        it "T T Should return T" $ do
+            myImplies True True `shouldBe` True
+        it "T F Should return F" $ do
+            myImplies True False `shouldBe` False
+        it "F T Should return T" $ do
+            myImplies False True `shouldBe` True
+        it "F F Should return T" $ do
+            myImplies False False `shouldBe` True
