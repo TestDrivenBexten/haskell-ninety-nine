@@ -34,3 +34,13 @@ spec = do
             myNand False True `shouldBe` True
         it "F F Should return T" $ do
             myNand False False `shouldBe` True
+                        
+    describe "Given the NOR operator" $ do
+        it "T T Should return F" $ do
+            myNor True True `shouldBe` False
+        it "T F Should return F" $ do
+            myNor True False `shouldBe` False
+        it "F T Should return F" $ do
+            myNor False True `shouldBe` False
+        it "F F Should return T" $ do
+            myNor False False `shouldBe` True
