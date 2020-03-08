@@ -4,7 +4,8 @@ module LogicNinetyNine
         myNand,
         myNor,
         myXor,
-        myImplies
+        myImplies,
+        myEqual
     ) where
 
 myAnd :: Bool -> Bool -> Bool
@@ -25,3 +26,6 @@ myXor a b = not (myNand a b)
 -- if a then b; a, therefore b
 myImplies :: Bool -> Bool -> Bool
 myImplies a b = myOr (not a) b
+
+myEqual :: Bool -> Bool -> Bool
+myEqual a b = a == b
