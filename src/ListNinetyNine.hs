@@ -141,7 +141,7 @@ insertAt x xs n =
     in headList ++ [x] ++ tailList
 
 range :: Int -> Int -> [Int]
-range start end = drop (start -1) (take end (iterate (1+) 1))
+range start end = [start..end]
 
 randomSelect :: [a] -> Int -> [a]
 randomSelect xs n

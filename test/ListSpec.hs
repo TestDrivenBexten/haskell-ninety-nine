@@ -72,8 +72,8 @@ spec = do
             reverseList "Haskell" `shouldBe` "lleksaH"
 
     describe "P6. Check if a list is a palindome" $ do
-        it "An empty list should not be a palindrome" $ do
-            isPalindrome ([] :: [Int]) `shouldBe` False
+        it "An empty list should be a palindrome" $ do
+            isPalindrome ([] :: [Int]) `shouldBe` True
 
         it "A list with one number should be a palindrome" $ do
             isPalindrome [5] `shouldBe` True
