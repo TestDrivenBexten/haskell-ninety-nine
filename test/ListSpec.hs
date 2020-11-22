@@ -294,7 +294,7 @@ spec = do
         it "k=3 for a list of 12 should have 220 permutations" $ do
             (length . combinations 3 $ range 1 12) `shouldBe` 220
 
-    describe "When getting all disjoint subsets" $ do
+    describe "P27. Get all disjoint subsets" $ do
         it "group (3) for 123 should give 123" $ do
             groupDisjoint [3] [1,2,3] `shouldBe` [[[1,2,3]]]
         
@@ -307,7 +307,7 @@ spec = do
         it "group (2,3,4) for [abcdefghi] should give 1260 permutations" $ do
             length (groupDisjoint [2,3,4] "abcdefghi") `shouldBe` 1260
 
-    describe "When sorting lists by length" $ do
+    describe "P28a. Sort lists by length" $ do
         it "The list a,do should be a,do" $ do
             lsort ["a","do"] `shouldBe` ["a","do"]
 
@@ -317,7 +317,7 @@ spec = do
         it "The list abc,de,fgh,de,ijkl,mn,o should be o,de,de,mn,abc,fgh,ijkl" $ do
             lsort ["abc","de","fgh","de","ijkl","mn","o"] `shouldBe` ["o","de","de","mn","abc","fgh","ijkl"]
 
-    describe "When sorting lists by length" $ do
+    describe "P28b. Sort lists by length frequency" $ do
         it "The list be,a,do should be a,be,do" $ do
             lfsort ["be","a","do"] `shouldBe` ["a","be","do"]
 
