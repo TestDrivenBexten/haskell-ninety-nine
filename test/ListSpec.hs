@@ -102,7 +102,7 @@ spec = do
         it "The word \"borroworrob\" should be a palindrome" $ do
             isPalindrome "borroworrob" `shouldBe` True
 
-    describe "When flattening a nested list" $ do
+    describe "P7. Flatten a nested list" $ do
         it "A node 5 should be [5]" $ do
             flattenList (Node 5) `shouldBe` [5]
         
@@ -122,7 +122,7 @@ spec = do
                         Branch[(Node 3),(Node 1)]]
                 ]) `shouldBe` [6,9,8,5,2,3,1]
 
-    describe "When compressing a list with duplicates" $ do
+    describe "P8. Compress a list with duplicates" $ do
         it "An empty list returns an empty list" $ do
             compress ([] :: [Int]) `shouldBe` ([] :: [Int])
         
@@ -141,7 +141,7 @@ spec = do
         it "aaaabccaadeeee should be compressed to abcade" $ do
             compress "aaaabccaadeeee" `shouldBe` "abcade"
 
-    describe "When packing a list with duplicates" $ do
+    describe "P9. Pack a list with duplicates" $ do
         it "An empty list returns an empty list" $ do
             pack ([] :: [Int]) `shouldBe` ([] :: [[Int]])
 
@@ -157,7 +157,7 @@ spec = do
         it "aaaabccaadeeee should be [aaaa,b,cc,aa,d,eeee]" $ do
             pack "aaaabccaadeeee" `shouldBe` ["aaaa","b","cc","aa","d","eeee"]
 
-    describe "When encoding a list with duplicates" $ do
+    describe "P10. Encode a list with duplicates" $ do
         it "An empty list returns an empty list" $ do
             encode ([] :: [Int]) `shouldBe` ([] :: [(Int,Int)])
 
@@ -167,28 +167,28 @@ spec = do
         it "aaaabccaadeeee should be [(4,a),(1,b),(2,c),(2,a),(1,d),(4,e)]" $ do
             encode "aaaabccaadeeee" `shouldBe` [(4,'a'),(1,'b'),(2,'c'),(2,'a'),(1,'d'),(4,'e')]
 
-    describe "When encoding a list with statuses" $ do
+    describe "P11. Encode a list with statuses" $ do
         it "abc should be [Single a, Single b, Single c]" $ do
             encodeModified "abc" `shouldBe` [Single 'a',Single 'b',Single 'c']
 
         it "aaaabccaadeeee should be [Multiple 4 'a',Single 'b',Multiple 2 'c',Multiple 2 'a',Single 'd',Multiple 4 'e']" $ do
             encodeModified "aaaabccaadeeee" `shouldBe` [Multiple (4,'a'),Single 'b',Multiple (2,'c'),Multiple (2,'a'),Single 'd',Multiple (4,'e')]
 
-    describe "When decoding a list with statuses" $ do
+    describe "P12. Decode a list with statuses" $ do
         it "[Single a, Single b, Single c] should be abc" $ do
             decodeModified [Single 'a',Single 'b',Single 'c'] `shouldBe` "abc"
 
         it "[Multiple 4 'a',Single 'b',Multiple 2 'c',Multiple 2 'a',Single 'd',Multiple 4 'e'] should be aaaabccaadeeee" $ do
             decodeModified [Multiple (4,'a'),Single 'b',Multiple (2,'c'),Multiple (2,'a'),Single 'd',Multiple (4,'e')] `shouldBe` "aaaabccaadeeee"
 
-    describe "When encoding a list with duplicates without grouping" $ do
+    describe "P13. a list with duplicates without grouping" $ do
         it "The list [5] should return [Single 5]" $ do
             encodeDirect [5] `shouldBe` [Single 5]
 
         it "aaaabccaadeeee should be [(4,a),(1,b),(2,c),(2,a),(1,d),(4,e)]" $ do
             encodeDirect "aaaabccaadeeee" `shouldBe` [Multiple (4,'a'),Single 'b',Multiple (2,'c'),Multiple (2,'a'),Single 'd',Multiple (4,'e')]
 
-    describe "When duplicating the elements in a list" $ do
+    describe "P14. Duplicate the elements in a list" $ do
         it "An empty list should be an empty list" $ do
             dupli ([] :: [Int]) `shouldBe` ([] :: [Int])
 
