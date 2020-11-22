@@ -231,21 +231,21 @@ spec = do
         it "abcdef split at position 3 should be abc and def" $ do
             splitList "abcdef" 3 `shouldBe` ("abc","def")
 
-    describe "When slicing a subset from a list" $ do
+    describe "P18. Slice a subset from a list" $ do
         it "The list [10,20,30,40,50] should be [20,30,40] from 2 to 4" $ do
             sliceList [10,20,30,40,50] 2 4 `shouldBe` [20,30,40]
 
         it "The word \"terror\" should be \"error\" from 2 to 6" $ do
             sliceList "terror" 2 6 `shouldBe` "error"
 
-    describe "When rotating a list n places to the left" $ do
-        it "The word \"polka\" shifted left 2 becomes \"lkapo\"" $ do
+    describe "P19. Rotate a list n places to the left" $ do
+        it "The word \"polka\" shifted left 2 should be \"lkapo\"" $ do
             rotateList "polka" 2 `shouldBe` "lkapo"
 
-        it "The list [3,5,7,11,13] shifted right 1 becomes [13,3,5,7,11]" $ do
+        it "The list [3,5,7,11,13] shifted right 1 should be [13,3,5,7,11]" $ do
             rotateList [3,5,7,11,13] (-1) `shouldBe` [13,3,5,7,11]
 
-    describe "When removing an element in a list" $ do
+    describe "P20. Remove an element from a list" $ do
         it "The word \"splice\" should be \"slice\" removing the second letter" $ do
             removeElement 2 "splice" `shouldBe` "slice"
 
