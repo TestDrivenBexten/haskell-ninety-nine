@@ -6,22 +6,17 @@ import ListNinetyNine
 
 spec :: Spec
 spec = do
-    describe "When finding the last element of a list" $ do
-        describe "Given an empty list" $ do
-            it "Should throw an error" $ do
-                lastInList [] `shouldThrow` anyException
+    describe "P1. Find last element of a list" $ do
+        it "Should throw an error on empty list" $ do
+            lastInList [] `shouldThrow` anyException
 
-        describe "Given a list of fractionals" $ do
-            let fractionalList = [2.5,5.6,8.9]
-            it "Should return the last fractional" $ do
-                lastInList fractionalList `shouldBe` 8.9
+        it "Should return the last floating in list" $ do
+            lastInList [2.5,8.9] `shouldBe` 8.9
 
-        describe "Given a list of integers" $ do
-            let numberList = [4,5,6]
-            it "The last number should be returned" $ do
-                lastInList numberList `shouldBe` 6
+        it "Should return the last integral in list" $ do
+            lastInList [4,5,6] `shouldBe` 6
 
-    describe "When finding the penultimate element in a list" $ do
+    describe "P2. Find penultimate element in list" $ do
         it "An empty list should throw an error" $ do
             penultimateInList [] `shouldThrow` anyException
         
