@@ -202,7 +202,8 @@ lfsort xs = findOne
     -- lengthFrequencies = encode $ map (\y -> length y) $ lsort (x:xs)
 
     findOne = [ x | x <- xs, head orderedLengthList == length x]
-    orderedLengthList = compress $ map snd $ List.sortBy compareFrequencyLength $ frequencyLengthList
+    orderedLengthList = compress $ map snd sortedFreqLengthList
+    sortedFreqLengthList = List.sortBy compareFrequencyLength frequencyLengthList
     frequencyLengthList = encode $ map length $ lsort xs
 
 compareFrequencyLength :: (Int,Int) -> (Int,Int) -> Ordering
