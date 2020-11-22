@@ -80,8 +80,8 @@ compress (x:xs) = if x == head xs then compress xs else [x] ++ compress xs
 
 pack :: (Eq a) => [a] -> [[a]]
 pack [] = []
-pack (x:xs) = [[x] ++ (fst splitTuple)] ++ pack (snd splitTuple)
-  where splitTuple = span (== x) xs
+pack (x:xs) = [[x] ++ duplicate] ++ pack remainder
+  where (duplicate,remainder) = span (== x) xs
 
 encode :: (Eq a) => [a] -> [(Int, a)]
 encode xs = map (\x -> (numElements x,head x)) (pack xs)
