@@ -29,7 +29,7 @@ spec = do
         it "A list with three elements should return the second element" $ do
             penultimateInList [5,6,7] `shouldBe` 6
 
-    describe "When finding the kth element in a list" $ do
+    describe "P3. Find kth element of a list" $ do
         it "An empty list should throw an error" $ do
             kthInList [] 1 `shouldThrow` anyException
 
@@ -48,7 +48,7 @@ spec = do
         it "The String \"Haskell\" should return 'e' for k=5" $ do
             kthInList "Haskell" 5 `shouldBe` 'e'
 
-    describe "When finding the number of elements in a list" $ do
+    describe "P4. Find the number of elements in a list" $ do
         it "An empty list should return 0" $ do
             numElements [] `shouldBe` 0
 
@@ -58,10 +58,7 @@ spec = do
         it "The String \"Haskell\" should return 7" $ do
             numElements "Haskell" `shouldBe` 7
 
-        it "The String \"Hello, World!\" should return 13" $ do
-            numElements "Hello, World!" `shouldBe` 13
-
-    describe "When reversing a list" $ do
+    describe "P5. Reverse a list" $ do
         it "An empty list should be an empty list" $do
             length (reverseList ([] :: [Int])) `shouldBe` 0
 
@@ -71,60 +68,38 @@ spec = do
         it "The list [4,5] should be [5,4]" $ do
             reverseList [4,5] `shouldBe` [5,4]
 
-        it "The list [3,4,5] should be [5,4,3]" $ do
-            reverseList [3,4,5] `shouldBe` [5,4,3]
-
         it "The String \"Haskell\" should be \"lleksaH\"" $ do
             reverseList "Haskell" `shouldBe` "lleksaH"
 
-    describe "When checking for a palindome" $ do
-        describe "When trimming the ends off a word" $ do
-            it "An empty String should be an empty String" $ do
-                trimEnds "" `shouldBe` ""
-            
-            it "The character 'a' should be ''" $ do
-                trimEnds "a" `shouldBe` ""
+    describe "P6. Check if a list is a palindome" $ do
+        it "An empty list should not be a palindrome" $ do
+            isPalindrome ([] :: [Int]) `shouldBe` False
 
-            it "The word \"no\" should be ''" $ do
-                trimEnds "no" `shouldBe` ""
-
-            it "The word \"cat\" should be 'a'" $ do
-                trimEnds "cat" `shouldBe` "a"
-
-        it "An empty list should throw an exception" $ do
-            isPalindrome ([] :: [Int]) `shouldBe` True
-
-        it "A list with one number is a palindrome" $ do
+        it "A list with one number should be a palindrome" $ do
             isPalindrome [5] `shouldBe` True
 
-        it "A single character is a palindrome" $ do
+        it "A single character should be a palindrome" $ do
             isPalindrome "a" `shouldBe` True
 
-        it "A list with the numbers [5,5] is a palindrome" $ do
+        it "A list with the numbers [5,5] should be a palindrome" $ do
             isPalindrome [5,5] `shouldBe` True
 
-        it "A list with the numbers [3,7] is not a palindrome" $ do
+        it "A list with the numbers [3,7] should not be a palindrome" $ do
             isPalindrome [3,7] `shouldBe` False
 
-        it "The word \"aa\" is a palindrome" $ do
-            isPalindrome "aa" `shouldBe` True
-
-        it "The word \"no\" is not a palindrome" $ do
-            isPalindrome "no" `shouldBe` False
-
-        it "The word \"cat\" is not a palindrome" $ do
+        it "The word \"cat\" should not be a palindrome" $ do
             isPalindrome "cat" `shouldBe` False
 
-        it "The word \"bib\" is a palindrome" $ do
+        it "The word \"bib\" should be a palindrome" $ do
             isPalindrome "bib" `shouldBe` True
 
-        it "A list with the numbers [3,4,5] is not a palindrome" $ do
+        it "A list with the numbers [3,4,5] should not be a palindrome" $ do
             isPalindrome [3,4,5] `shouldBe` False
 
-        it "A list with the numbers [6,2,6] is a palindrome" $ do
+        it "A list with the numbers [6,2,6] should be a palindrome" $ do
             isPalindrome [6,2,6] `shouldBe` True
 
-        it "The word \"borroworrob\" is a palindrome" $ do
+        it "The word \"borroworrob\" should be a palindrome" $ do
             isPalindrome "borroworrob" `shouldBe` True
 
     describe "When flattening a nested list" $ do
