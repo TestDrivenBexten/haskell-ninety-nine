@@ -252,29 +252,29 @@ spec = do
         it "The list [4,5,6] should be [4,5] removing the third element" $ do
             removeElement 3 [4,5,6] `shouldBe` [4,5]
 
-    describe "When inserting an element into a list" $ do
+    describe "P21. Insert an element into a list" $ do
         it "The number 5 should be inserted into the empty list at 1" $ do
             insertAt 5 [] 1 `shouldBe` [5]
 
-        it "The letter x inserted at 2" $ do
-            insertAt 'X' "abcd" 2 `shouldBe` "aXbcd"
+        it "The letter 'x' inserted into \"abcd\" at 2 should return \"axbcd\"" $ do
+            insertAt 'x' "abcd" 2 `shouldBe` "axbcd"
 
-    describe "When creating a range of integers" $ do
+    describe "P22. Create a range of integers" $ do
         it "The range 1 to 3 should be [1,2,3]" $ do
             range 1 3 `shouldBe` [1,2,3]
 
         it "The range 4 to 9 should be [4,5,6,7,8,9]" $ do
             range 4 9 `shouldBe` [4,5,6,7,8,9]
 
-    describe "When selecting n elements randomly" $ do
+    describe "P23. Select n elements randomly" $ do
         it "Randomly selecting 3 from [1,2,3,4,5,6,7]" $ do
             randomSelect (range 1 7) 3 `shouldBe` [1,7,5]
 
-    describe "When drawing n numbers from the set 1..M" $ do
+    describe "P24. Draw n numbers from the set 1..M" $ do
         it "Randomly select six elements up to 49" $ do
             randomLotto 6 49 `shouldBe` [15,37,9,26,43,8]
 
-    describe "When shuffling a list" $ do
+    describe "P25. Shuffle a list" $ do
         it "Shuffle 1 to 5" $ do
             shuffleList (range 1 5) `shouldBe` [4,5,3,2,1]
 
