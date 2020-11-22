@@ -112,7 +112,7 @@ encodeDirect xs =
     in [listToCountStatus headList] ++ encodeDirect tailList
 
 dupli :: [a] -> [a]
-dupli xs = concatMap (\x -> [x,x]) xs
+dupli = foldr (\x list -> x:x:list) []
 
 repli :: [a] -> Int -> [a]
 repli xs n = concatMap (take n . repeat) xs
