@@ -5,7 +5,7 @@ import LogicNinetyNine
 
 spec :: Spec
 spec = do
-    describe "Given the AND operator" $ do
+    describe "P46a. The AND operator" $ do
         it "T T Should return T" $ do
             myAnd True True `shouldBe` True
         it "T F Should return F" $ do
@@ -15,7 +15,7 @@ spec = do
         it "F F Should return F" $ do
             myAnd False False `shouldBe` False
             
-    describe "Given the OR operator" $ do
+    describe "P46b. The OR operator" $ do
         it "T T Should return T" $ do
             myOr True True `shouldBe` True
         it "T F Should return T" $ do
@@ -25,7 +25,7 @@ spec = do
         it "F F Should return F" $ do
             myOr False False `shouldBe` False
                         
-    describe "Given the NAND operator" $ do
+    describe "P46c. The NAND operator" $ do
         it "T T Should return F" $ do
             myNand True True `shouldBe` False
         it "T F Should return T" $ do
@@ -35,7 +35,7 @@ spec = do
         it "F F Should return T" $ do
             myNand False False `shouldBe` True
                         
-    describe "Given the NOR operator" $ do
+    describe "P46d. The NOR operator" $ do
         it "T T Should return F" $ do
             myNor True True `shouldBe` False
         it "T F Should return F" $ do
@@ -45,7 +45,7 @@ spec = do
         it "F F Should return T" $ do
             myNor False False `shouldBe` True
                 
-    describe "Given the XOR operator" $ do
+    describe "P46e. The XOR operator" $ do
         it "T T Should return T" $ do
             myXor True True `shouldBe` True
         it "T F Should return F" $ do
@@ -55,7 +55,7 @@ spec = do
         it "F F Should return F" $ do
             myXor False False `shouldBe` False
     
-    describe "Given the IMPLIES operator" $ do
+    describe "P46f. The IMPLIES operator" $ do
         it "T T Should return T" $ do
             myImplies True True `shouldBe` True
         it "T F Should return F" $ do
@@ -65,7 +65,7 @@ spec = do
         it "F F Should return T" $ do
             myImplies False False `shouldBe` True
                 
-    describe "Given the EQUAL operator" $ do
+    describe "P46g. The EQUAL operator" $ do
         it "T T Should return T" $ do
             myEqual True True `shouldBe` True
         it "T F Should return F" $ do
@@ -75,7 +75,7 @@ spec = do
         it "F F Should return T" $ do
             myEqual False False `shouldBe` True
 
-    describe "When finding gray codes" $ do
+    describe "P49. Find the gray codes" $ do
         it "C=1 should give [0,1]" $ do
             gray 1 `shouldBe` ["0","1"]
             
