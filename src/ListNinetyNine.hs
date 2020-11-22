@@ -131,7 +131,7 @@ sliceList xs start end = drop (start - 1) (take end xs)
 
 rotateList :: [a] -> Int -> [a]
 rotateList xs n =
-  let (headList,tailList) = splitList xs (mod (length xs + n) (length xs))
+  let (headList,tailList) = splitList xs $ (length xs + n) `mod` (length xs)
     in tailList ++ headList
 
 removeElement :: Int -> [a] -> [a]
