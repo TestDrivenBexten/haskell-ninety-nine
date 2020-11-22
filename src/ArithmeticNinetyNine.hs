@@ -33,7 +33,9 @@ coprime :: Int -> Int -> Bool
 coprime x y = myGcd x y == 1
 
 totient :: Int -> Int
-totient x = length (filter (\y -> coprime x y) $ range 1 (x - 1))
+totient x = 
+    let numRange = range 1 (x - 1)
+        in length [ y | y <- numRange, coprime x y]
 
 primeFactors :: Int -> [Int]
 primeFactors x
