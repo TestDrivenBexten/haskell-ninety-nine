@@ -75,7 +75,6 @@ flattenList (Branch x) = concatMap flattenList x
 compress :: (Eq a) => [a] -> [a]
 compress [] = []
 compress [x] = [x]
-compress [x,y] = if x == y then [x] else [x,y]
 compress (x:xs)
   | x == head xs = compress xs
   | otherwise = [x] ++ compress xs
