@@ -33,6 +33,7 @@ module ListNinetyNine
       lfsort
     ) where
 
+import qualified Data.List as List
 import System.Random
 
 lastInList :: [a] -> a
@@ -188,13 +189,13 @@ lsort (x:xs) = lsort shortSubList ++ [x] ++ lsort longSubList
 
 lfsort :: [[a]] -> [[a]]
 lfsort [] = []
-lfsort (x:xs) = rareSublist ++ [x] ++ currentSublist ++ commonSublist
+lfsort xs = [ x | y <- orderedLengthList, x <- xs, y == length x]
   where
-    currentSublist = filter (\y -> has (length y) currentLengthList) xs
-    currentLengthList = [ snd x | x <- lengthFrequencies, fst x == currentListFrequency]
-    commonSublist = filter (\y -> has (length y) commonLengthList) xs
-    commonLengthList = [ snd x | x <- lengthFrequencies, fst x > currentListFrequency]
-    rareSublist = filter (\y -> has (length y) rareLengthList) xs
-    rareLengthList = [ snd x | x <- lengthFrequencies, fst x < currentListFrequency]
-    currentListFrequency = fst $ head $ filter (\(_,y) -> y == length x) lengthFrequencies
-    lengthFrequencies = encode $ map (\y -> length y) $ lsort (x:xs)
+    orderedLengthList = compress $ map snd sortedFreqLengthList
+    sortedFreqLengthList = List.sortBy compareFrequencyLength frequencyLengthList
+    frequencyLengthList = encode $ map length $ lsort xs
+
+compareFrequencyLength :: (Int,Int) -> (Int,Int) -> Ordering
+compareFrequencyLength (xFreq,_) (yFreq,_)
+  | xFreq < yFreq = LT
+  | otherwise = GT
