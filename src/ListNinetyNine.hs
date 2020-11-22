@@ -51,9 +51,7 @@ kthInList [] x = error "Empty list"
 kthInList xs x = xs !! (x - 1)
 
 numElements :: [a] -> Int
-numElements [] = 0
-numElements [x] = 1
-numElements (_:xs) = 1 + numElements xs
+numElements = foldl (\count _ -> count + 1) 0
 
 reverseList :: [a] -> [a]
 reverseList [] = []
