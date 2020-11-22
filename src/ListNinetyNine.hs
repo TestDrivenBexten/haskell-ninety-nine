@@ -174,12 +174,6 @@ groupDisjoint (n:ns) xs =
 removeElements :: (Eq a) => [a] -> [a] -> [a]
 removeElements elemList xs = [ x | x <- xs, not(x `elem` elemList)]
 
-has :: (Eq a) => a -> [a] -> Bool
-has x [] = False
-has x xs
-  | length xs > 1 = or [x == head xs, has x (tail xs)]
-  | length xs == 1 = x == head xs
-
 lsort :: [[a]] -> [[a]]
 lsort [] = []
 lsort (x:xs) = lsort shortSubList ++ [x] ++ lsort longSubList
