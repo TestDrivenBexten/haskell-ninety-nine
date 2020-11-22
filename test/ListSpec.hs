@@ -281,7 +281,7 @@ spec = do
         it "Shuffle abcde" $ do
             shuffleList "abcde" `shouldBe` "decba"
 
-    describe "When getting all combinations of a list" $ do
+    describe "P26. Get all combinations of a list taking k elements" $ do
         it "k=1 for abc should have 3 permutations" $ do
             combinations 1 "abc" `shouldBe` ["a","b","c"]
 
@@ -292,7 +292,7 @@ spec = do
             length (combinations 2 "abcd") `shouldBe` 6
 
         it "k=3 for a list of 12 should have 220 permutations" $ do
-            length (combinations 3 (range 1 12)) `shouldBe` 220
+            (length . combinations 3 $ range 1 12) `shouldBe` 220
 
     describe "When getting all disjoint subsets" $ do
         it "group (3) for 123 should give 123" $ do
