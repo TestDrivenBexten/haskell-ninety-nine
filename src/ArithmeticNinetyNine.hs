@@ -19,7 +19,7 @@ import Data.List
 isPrime :: Int -> Bool
 isPrime x
     | x < 2 = False
-    | otherwise = not (any (\y -> (x `mod` y) == 0) (range 2 (x - 1)))
+    | otherwise = not $ any (\y -> (x `mod` y) == 0) $ range 2 (x - 1)
 
 myGcd :: Int -> Int -> Int
 myGcd x y
@@ -33,7 +33,7 @@ coprime :: Int -> Int -> Bool
 coprime x y = myGcd x y == 1
 
 totient :: Int -> Int
-totient x = length (filter (\y -> coprime x y) (range 1 (x - 1)))
+totient x = length (filter (\y -> coprime x y) $ range 1 (x - 1))
 
 primeFactors :: Int -> [Int]
 primeFactors x
