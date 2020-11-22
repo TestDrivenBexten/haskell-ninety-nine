@@ -97,7 +97,7 @@ listToCountStatus xs
   | otherwise = Multiple (numElements xs,head xs)
 
 encodeModified :: (Eq a) => [a] -> [CountStatus a]
-encodeModified xs = map (\x -> listToCountStatus x) (pack xs)
+encodeModified xs = map listToCountStatus (pack xs)
 
 decodeModified :: [CountStatus a] -> [a]
 decodeModified = concatMap helper
