@@ -198,9 +198,9 @@ spec = do
         it "The list [1,2,3] should be [1,1,2,2,3,3]" $ do
             dupli [1,2,3] `shouldBe` [1,1,2,2,3,3]
             
-    describe "When replicating the elements in a list" $ do
+    describe "P15. Replicate the elements in a list" $ do
         it "The empty list should be an empty list" $ do
-            repli ([] :: [Int]) 3 `shouldBe` ([] :: [Int])
+            repli [] 3 `shouldBe` ([] :: [Int])
 
         it "Replicating the word abc 3 times should be aaabbbccc" $ do
             repli "abc" 3 `shouldBe` "aaabbbccc"
@@ -211,28 +211,24 @@ spec = do
         it "Replicating [1,2,3] 0 times should be an empty list" $ do
             repli [1,2,3] 0 `shouldBe` []
     
-    describe "When dropping every nth element from a list" $ do
-        describe "An n value of 1 should return original list" $ do
-            it "The word apple should be ''" $ do
-                dropEvery "apple" 1 `shouldBe` ""
+    describe "P16. every nth element from a list" $ do
+        it "The word apple dropping every character should be ''" $ do
+            dropEvery "apple" 1 `shouldBe` ""
 
-            it "The list [1,2,3] should be []" $ do
-                dropEvery [1,2,3] 1 `shouldBe` ([] :: [Int])
-
-        it "The word apple dropping every fifth element should be \"appl\"" $ do
+        it "The word apple dropping every fifth character should be \"appl\"" $ do
             dropEvery "apple" 5 `shouldBe` "appl"
 
-        it "The word apple dropping every sixth element should be \"apple\"" $ do
+        it "The word apple dropping every sixth character should be \"apple\"" $ do
             dropEvery "apple" 6 `shouldBe` "apple"
 
-        it "The sequence \"abcdefghik\" dropping every third element should be \"abdeghk\"" $ do
+        it "The sequence \"abcdefghik\" dropping every third character should be \"abdeghk\"" $ do
             dropEvery "abcdefghik" 3 `shouldBe` "abdeghk"
 
-    describe "When splitting a list into two parts" $ do
-        it "The list [1,2,3] split at position 3 will be [[1,2,3],[]]" $ do
+    describe "P17. Split a list into two parts" $ do
+        it "The list [1,2,3] split at position 3 should be [[1,2,3],[]]" $ do
             splitList [1,2,3] 3 `shouldBe` ([1,2,3],[])
 
-        it "abcdef split at position 3 will be abc and def" $ do
+        it "abcdef split at position 3 should be abc and def" $ do
             splitList "abcdef" 3 `shouldBe` ("abc","def")
 
     describe "When slicing a subset from a list" $ do
