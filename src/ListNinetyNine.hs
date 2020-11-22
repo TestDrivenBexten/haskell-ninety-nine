@@ -33,6 +33,7 @@ module ListNinetyNine
       lfsort
     ) where
 
+import qualified Data.Map as Map
 import System.Random
 
 lastInList :: [a] -> a
@@ -198,3 +199,4 @@ lfsort (x:xs) = rareSublist ++ [x] ++ currentSublist ++ commonSublist
     rareLengthList = [ snd x | x <- lengthFrequencies, fst x < currentListFrequency]
     currentListFrequency = fst $ head $ filter (\(_,y) -> y == length x) lengthFrequencies
     lengthFrequencies = encode $ map (\y -> length y) $ lsort (x:xs)
+    lengthFrequencyMap = Map.fromList $ encode $ map length $ lsort (x:xs)
