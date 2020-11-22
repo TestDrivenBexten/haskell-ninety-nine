@@ -90,7 +90,9 @@ data CountStatus a = Single a | Multiple (Int, a)
   deriving (Eq, Show)
 
 listToCountStatus :: [a] -> CountStatus a
-listToCountStatus xs = if numElements xs == 1 then Single (head xs) else Multiple (numElements xs,head xs)
+listToCountStatus xs
+  | numElements xs == 1 = Single (head xs)
+  | otherwise = Multiple (numElements xs,head xs)
 
 encodeModified :: (Eq a) => [a] -> [CountStatus a]
 encodeModified xs = map (\x -> listToCountStatus x) (pack xs)
