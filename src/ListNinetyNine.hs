@@ -34,7 +34,6 @@ module ListNinetyNine
     ) where
 
 import qualified Data.List as List
-import qualified Data.Map as Map
 import System.Random
 
 lastInList :: [a] -> a
