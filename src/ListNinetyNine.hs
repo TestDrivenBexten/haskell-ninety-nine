@@ -191,7 +191,7 @@ lfsort [] = []
 lfsort (x:xs) = rareSublist ++ [x] ++ currentSublist ++ commonSublist
   where
     currentSublist = filter (\y -> has (length y) currentLengthList) xs
-    currentLengthList = map (\x -> snd x) (filter (\(frequency,_) -> frequency == currentListFrequency) lengthFrequencies)
+    currentLengthList = map (\x -> snd x) [ x | x <- lengthFrequencies, fst x == currentListFrequency]
     commonSublist = filter (\y -> has (length y) commonLengthList) xs
     commonLengthList = map (\x -> snd x) (filter (\(frequency,_) -> frequency > currentListFrequency) lengthFrequencies)
     rareSublist = filter (\y -> has (length y) rareLengthList) xs
