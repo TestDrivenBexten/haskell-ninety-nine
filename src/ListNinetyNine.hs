@@ -171,7 +171,7 @@ groupDisjoint (n:ns) xs =
            gs <- groupDisjoint ns (removeElements rs xs)]
 
 removeElements :: (Eq a) => [a] -> [a] -> [a]
-removeElements removeList targetList = filter (\y -> not(has y removeList)) targetList
+removeElements elemList xs = [ x | x <- xs, not(x `elem` elemList)]
 
 has :: (Eq a) => a -> [a] -> Bool
 has x [] = False
