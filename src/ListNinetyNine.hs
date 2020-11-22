@@ -76,7 +76,9 @@ compress :: (Eq a) => [a] -> [a]
 compress [] = []
 compress [x] = [x]
 compress [x,y] = if x == y then [x] else [x,y]
-compress (x:xs) = if x == head xs then compress xs else [x] ++ compress xs
+compress (x:xs)
+  | x == head xs = compress xs
+  | otherwise = [x] ++ compress xs
 
 pack :: (Eq a) => [a] -> [[a]]
 pack [] = []
