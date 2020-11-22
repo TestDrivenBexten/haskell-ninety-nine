@@ -51,9 +51,7 @@ kthInList [] x = error "Empty list"
 kthInList xs x = xs !! (x - 1)
 
 numElements :: [a] -> Int
-numElements [] = 0
-numElements [x] = 1
-numElements (_:xs) = 1 + numElements xs
+numElements = foldl (\count _ -> count + 1) 0
 
 reverseList :: [a] -> [a]
 reverseList [] = []
@@ -77,13 +75,14 @@ flattenList (Branch x) = concatMap flattenList x
 compress :: (Eq a) => [a] -> [a]
 compress [] = []
 compress [x] = [x]
-compress [x,y] = if x == y then [x] else [x,y]
-compress (x:xs) = if x == head xs then compress xs else [x] ++ compress xs
+compress (x:xs)
+  | x == head xs = compress xs
+  | otherwise = [x] ++ compress xs
 
 pack :: (Eq a) => [a] -> [[a]]
 pack [] = []
-pack (x:xs) = [[x] ++ (fst splitTuple)] ++ pack (snd splitTuple)
-  where splitTuple = span (== x) xs
+pack xs = [duplicate] ++ pack remainder
+  where (duplicate,remainder) = span (== head xs) xs
 
 encode :: (Eq a) => [a] -> [(Int, a)]
 encode xs = map (\x -> (numElements x,head x)) (pack xs)
@@ -92,7 +91,9 @@ data CountStatus a = Single a | Multiple (Int, a)
   deriving (Eq, Show)
 
 listToCountStatus :: [a] -> CountStatus a
-listToCountStatus xs = if numElements xs == 1 then Single (head xs) else Multiple (numElements xs,head xs)
+listToCountStatus xs
+  | numElements xs == 1 = Single (head xs)
+  | otherwise = Multiple (numElements xs,head xs)
 
 encodeModified :: (Eq a) => [a] -> [CountStatus a]
 encodeModified xs = map (\x -> listToCountStatus x) (pack xs)
@@ -141,7 +142,7 @@ insertAt x xs n =
     in headList ++ [x] ++ tailList
 
 range :: Int -> Int -> [Int]
-range start end = drop (start -1) (take end (iterate (1+) 1))
+range start end = [start..end]
 
 randomSelect :: [a] -> Int -> [a]
 randomSelect xs n
@@ -170,7 +171,7 @@ groupDisjoint (n:ns) xs =
            gs <- groupDisjoint ns (removeElements rs xs)]
 
 removeElements :: (Eq a) => [a] -> [a] -> [a]
-removeElements removeList targetList = filter (\y -> not(has y removeList)) targetList
+removeElements elemList xs = [ x | x <- xs, not(x `elem` elemList)]
 
 has :: (Eq a) => a -> [a] -> Bool
 has x [] = False
@@ -190,10 +191,10 @@ lfsort [] = []
 lfsort (x:xs) = rareSublist ++ [x] ++ currentSublist ++ commonSublist
   where
     currentSublist = filter (\y -> has (length y) currentLengthList) xs
-    currentLengthList = map (\x -> snd x) (filter (\(frequency,listLength) -> frequency == currentListFrequency) lengthFrequencies)
+    currentLengthList = [ snd x | x <- lengthFrequencies, fst x == currentListFrequency]
     commonSublist = filter (\y -> has (length y) commonLengthList) xs
-    commonLengthList = map (\x -> snd x) (filter (\(frequency,listLength) -> frequency > currentListFrequency) lengthFrequencies)
+    commonLengthList = [ snd x | x <- lengthFrequencies, fst x > currentListFrequency]
     rareSublist = filter (\y -> has (length y) rareLengthList) xs
-    rareLengthList = map (\x -> snd x) (filter (\(frequency,listLength) -> frequency < currentListFrequency) lengthFrequencies)
-    currentListFrequency = fst (head ( filter (\(_,y) -> y == length x) lengthFrequencies))
-    lengthFrequencies = encode (map (\y -> length y) (lsort (x:xs)))
+    rareLengthList = [ snd x | x <- lengthFrequencies, fst x < currentListFrequency]
+    currentListFrequency = fst $ head $ filter (\(_,y) -> y == length x) lengthFrequencies
+    lengthFrequencies = encode $ map (\y -> length y) $ lsort (x:xs)
