@@ -62,10 +62,9 @@ primeRange :: Int -> Int -> [Int]
 primeRange x y = filter isPrime (range x y)
 
 goldbach :: Int -> (Int, Int)
-goldbach x = head (filter (\(a,b) -> isPrime a && isPrime b) primePairList)
+goldbach x = head [ (a,b) | (a,b) <- pairList, isPrime a && isPrime b]
     where
-        primePairList = map (\y -> (y,x - y)) primeList
-        primeList = primeRange 2 x
+        pairList = map (\y -> (y,x - y)) $ primeRange 2 x
 
 goldbachList :: Int -> Int -> [(Int,Int)]
 goldbachList start end = map goldbach evenList
