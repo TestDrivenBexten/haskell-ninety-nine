@@ -124,7 +124,7 @@ spec = do
 
     describe "P8. Compress a list with duplicates" $ do
         it "An empty list returns an empty list" $ do
-            compress ([] :: [Int]) `shouldBe` ([] :: [Int])
+            compress [] `shouldBe` ([] :: [Int])
         
         it "The list [1] returns [1]" $ do
             compress [1] `shouldBe` [1]
@@ -143,7 +143,7 @@ spec = do
 
     describe "P9. Pack a list with duplicates" $ do
         it "An empty list returns an empty list" $ do
-            pack ([] :: [Int]) `shouldBe` ([] :: [[Int]])
+            pack [] `shouldBe` ([] :: [[Int]])
 
         it "The list [1] should be [[1]]" $ do
             pack [1] `shouldBe` [[1]]
@@ -159,7 +159,7 @@ spec = do
 
     describe "P10. Encode a list with duplicates" $ do
         it "An empty list returns an empty list" $ do
-            encode ([] :: [Int]) `shouldBe` ([] :: [(Int,Int)])
+            encode [] `shouldBe` ([] :: [(Int,Int)])
 
         it "The list [5] should return [(1,5)]" $ do
             encode [5] `shouldBe` [(1,5)]
@@ -190,7 +190,7 @@ spec = do
 
     describe "P14. Duplicate the elements in a list" $ do
         it "An empty list should be an empty list" $ do
-            dupli ([] :: [Int]) `shouldBe` ([] :: [Int])
+            dupli [] `shouldBe` ([] :: [Int])
 
         it "The word beer should be bbeeeerr" $ do
             dupli "beer" `shouldBe` "bbeeeerr"
