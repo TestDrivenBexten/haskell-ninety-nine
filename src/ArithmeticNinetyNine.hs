@@ -72,4 +72,8 @@ goldbachList start end = map goldbach evenList
         evenList = filter (\x -> x `mod` 2 == 0) (range start end)
 
 goldbachListMin :: Int -> Int -> Int -> [(Int,Int)]
-goldbachListMin start end min = filter (\pair -> (fst pair > min) && (snd pair > min)) (goldbachList start end)
+goldbachListMin start end min = 
+    let aboveMin = (\x -> x > min)
+        in [ (a,b) | (a,b) <- goldList, aboveMin a && aboveMin b]
+    where
+        goldList = goldbachList start end
