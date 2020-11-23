@@ -15,6 +15,7 @@ module ArithmeticNinetyNine
 
 import ListNinetyNine
 import Data.List 
+import Data.Tuple (swap)
 
 isPrime :: Int -> Bool
 isPrime x
@@ -49,7 +50,7 @@ isDivisible :: Int -> Int -> Bool
 isDivisible x y = x `mod` y == 0
 
 primeFactorsMult :: Int -> [(Int,Int)]
-primeFactorsMult x = map (\x -> (snd x,fst x)) (encode (primeFactors x))
+primeFactorsMult x = map swap (encode (primeFactors x))
 
 eulerTotientImproved :: Int -> Int
 eulerTotientImproved x = foldl (*) 1 phiFactorList
