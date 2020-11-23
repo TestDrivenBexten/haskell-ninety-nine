@@ -19,7 +19,7 @@ import Data.List
 isPrime :: Int -> Bool
 isPrime x
     | x < 2 = False
-    | otherwise = not $ any (\y -> (x `mod` y) == 0) $ range 2 (x - 1)
+    | otherwise = not $ any (isDivisible x) $ range 2 (x - 1)
 
 myGcd :: Int -> Int -> Int
 myGcd x y
@@ -43,7 +43,10 @@ primeFactors x
     | otherwise = [firstDivisor] ++ primeFactors (div x firstDivisor)
     where
         firstDivisor = head divisors
-        divisors = filter (\y -> x `mod` y == 0) (range 2 x)
+        divisors = filter (isDivisible x) (range 2 x)
+
+isDivisible :: Int -> Int -> Bool
+isDivisible x y = x `mod` y == 0
 
 primeFactorsMult :: Int -> [(Int,Int)]
 primeFactorsMult x = map (\x -> (snd x,fst x)) (encode (primeFactors x))
