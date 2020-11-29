@@ -59,7 +59,7 @@ eulerTotientImproved x = foldl (*) 1 phiFactorList
         primeFactorList = primeFactorsMult x
 
 primeRange :: Int -> Int -> [Int]
-primeRange x y = filter isPrime (range x y)
+primeRange x y = filter isPrime $ range x y
 
 goldbach :: Int -> (Int, Int)
 goldbach x = head [ (a,b) | (a,b) <- pairList, isPrime a && isPrime b]
@@ -69,7 +69,7 @@ goldbach x = head [ (a,b) | (a,b) <- pairList, isPrime a && isPrime b]
 goldbachList :: Int -> Int -> [(Int,Int)]
 goldbachList start end = map goldbach evenList
     where
-        evenList = filter (\x -> x `mod` 2 == 0) (range start end)
+        evenList = [ x | x <- [start..end], x `mod` 2 == 0]
 
 goldbachListMin :: Int -> Int -> Int -> [(Int,Int)]
 goldbachListMin start end min = 
