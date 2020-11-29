@@ -66,7 +66,7 @@ goldbach x = head (filter (\pair -> isPrime (fst pair) && isPrime (snd pair)) pr
 goldbachList :: Int -> Int -> [(Int,Int)]
 goldbachList start end = map goldbach evenList
     where
-        evenList = filter (\x -> x `mod` 2 == 0) (range start end)
+        evenList = [ x | x <- [start..end], x `mod` 2 == 0]
 
 goldbachListMin :: Int -> Int -> Int -> [(Int,Int)]
 goldbachListMin start end min = filter (\pair -> (fst pair > min) && (snd pair > min)) (goldbachList start end)
