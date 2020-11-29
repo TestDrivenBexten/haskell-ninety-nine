@@ -97,7 +97,7 @@ listToCountStatus xs
   | otherwise = Multiple (numElements xs,head xs)
 
 encodeModified :: (Eq a) => [a] -> [CountStatus a]
-encodeModified xs = map (\x -> listToCountStatus x) (pack xs)
+encodeModified xs = map listToCountStatus (pack xs)
 
 decodeModified :: [CountStatus a] -> [a]
 decodeModified = concatMap helper
@@ -173,12 +173,6 @@ groupDisjoint (n:ns) xs =
 
 removeElements :: (Eq a) => [a] -> [a] -> [a]
 removeElements elemList xs = [ x | x <- xs, not(x `elem` elemList)]
-
-has :: (Eq a) => a -> [a] -> Bool
-has x [] = False
-has x xs
-  | length xs > 1 = or [x == head xs, has x (tail xs)]
-  | length xs == 1 = x == head xs
 
 lsort :: [[a]] -> [[a]]
 lsort [] = []
