@@ -58,8 +58,9 @@ primeRange :: Int -> Int -> [Int]
 primeRange x y = filter isPrime $ range x y
 
 goldbach :: Int -> (Int, Int)
-goldbach x = head (filter (\pair -> isPrime (fst pair) && isPrime (snd pair)) primePairList)
+goldbach x = head bothPrimeList
     where
+        bothPrimeList = [ (y,z) | (y,z) <- primePairList, isPrime y && isPrime z ]
         primePairList = map (\y -> (y,x - y)) primeList
         primeList = primeRange 2 x
 
