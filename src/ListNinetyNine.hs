@@ -112,10 +112,10 @@ encodeDirect xs =
     in [listToCountStatus headList] ++ encodeDirect tailList
 
 dupli :: [a] -> [a]
-dupli xs = concatMap (\x -> [x,x]) xs
+dupli = foldr (\x list -> x:x:list) []
 
 repli :: [a] -> Int -> [a]
-repli xs n = concatMap (\x -> take n (repeat x)) xs
+repli xs n = concatMap (take n . repeat) xs
 
 dropEvery :: [a] -> Int -> [a]
 dropEvery [] _ = []
@@ -131,7 +131,7 @@ sliceList xs start end = drop (start - 1) (take end xs)
 
 rotateList :: [a] -> Int -> [a]
 rotateList xs n =
-  let (headList,tailList) = splitList xs (mod (length xs + n) (length xs))
+  let (headList,tailList) = splitList xs $ (length xs + n) `mod` (length xs)
     in tailList ++ headList
 
 removeElement :: Int -> [a] -> [a]

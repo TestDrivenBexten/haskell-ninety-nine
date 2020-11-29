@@ -15,11 +15,12 @@ module ArithmeticNinetyNine
 
 import ListNinetyNine
 import Data.List 
+import Data.Tuple (swap)
 
 isPrime :: Int -> Bool
 isPrime x
     | x < 2 = False
-    | otherwise = not $ any (\y -> (x `mod` y) == 0) $ range 2 (x - 1)
+    | otherwise = not $ any (isDivisible x) $ range 2 (x - 1)
 
 myGcd :: Int -> Int -> Int
 myGcd x y
@@ -43,10 +44,13 @@ primeFactors x
     | otherwise = [firstDivisor] ++ primeFactors (div x firstDivisor)
     where
         firstDivisor = head divisors
-        divisors = filter (\y -> x `mod` y == 0) (range 2 x)
+        divisors = filter (isDivisible x) (range 2 x)
+
+isDivisible :: Int -> Int -> Bool
+isDivisible x y = x `mod` y == 0
 
 primeFactorsMult :: Int -> [(Int,Int)]
-primeFactorsMult x = map (\x -> (snd x,fst x)) (encode (primeFactors x))
+primeFactorsMult x = map swap (encode (primeFactors x))
 
 eulerTotientImproved :: Int -> Int
 eulerTotientImproved x = foldl (*) 1 phiFactorList
@@ -58,11 +62,9 @@ primeRange :: Int -> Int -> [Int]
 primeRange x y = filter isPrime $ range x y
 
 goldbach :: Int -> (Int, Int)
-goldbach x = head bothPrimeList
+goldbach x = head [ (a,b) | (a,b) <- pairList, isPrime a && isPrime b]
     where
-        bothPrimeList = [ (y,z) | (y,z) <- primePairList, isPrime y && isPrime z ]
-        primePairList = map (\y -> (y,x - y)) primeList
-        primeList = primeRange 2 x
+        pairList = map (\y -> (y,x - y)) $ primeRange 2 x
 
 goldbachList :: Int -> Int -> [(Int,Int)]
 goldbachList start end = map goldbach evenList
@@ -70,6 +72,8 @@ goldbachList start end = map goldbach evenList
         evenList = [ x | x <- [start..end], x `mod` 2 == 0]
 
 goldbachListMin :: Int -> Int -> Int -> [(Int,Int)]
-goldbachListMin start end min = [ (x,y) | (x,y) <- myGoldbachList, x > min && y > min ]
+goldbachListMin start end min = 
+    let aboveMin = (\x -> x > min)
+        in [ (a,b) | (a,b) <- goldList, aboveMin a && aboveMin b]
     where
-        myGoldbachList = goldbachList start end
+        goldList = goldbachList start end
