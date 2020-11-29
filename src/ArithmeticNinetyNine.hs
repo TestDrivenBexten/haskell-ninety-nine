@@ -55,7 +55,7 @@ eulerTotientImproved x = foldl (*) 1 phiFactorList
         primeFactorList = primeFactorsMult x
 
 primeRange :: Int -> Int -> [Int]
-primeRange x y = filter (\z -> isPrime z) (range x y)
+primeRange x y = filter isPrime $ range x y
 
 goldbach :: Int -> (Int, Int)
 goldbach x = head (filter (\pair -> isPrime (fst pair) && isPrime (snd pair)) primePairList)
