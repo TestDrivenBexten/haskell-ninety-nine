@@ -10,10 +10,10 @@ spec = do
         it "Should throw an error on empty list" $ do
             lastInList [] `shouldThrow` anyException
 
-        it "Should return the last floating in list" $ do
-            lastInList [2.5,8.9] `shouldBe` 8.9
+        it "Should return the sole element in list" $ do
+            lastInList [8] `shouldBe` 8
 
-        it "Should return the last integral in list" $ do
+        it "Should return the last of three elements from list" $ do
             lastInList [4,5,6] `shouldBe` 6
 
     describe "P2. Find penultimate element in list" $ do
