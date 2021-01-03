@@ -13,7 +13,7 @@ huffman :: [(Char,Int)] -> [(Char,String)]
 huffman xs = [('a',"01")]
 
 buildHuffmanTree :: [CharFrequency] -> Tree
-buildHuffmanTree xs = Leaf ('a',1)
+buildHuffmanTree [x,y] = Branch (Leaf x) (Leaf y)
 
 treeTotal :: Tree -> Int
 treeTotal (Leaf x) = snd x
