@@ -6,7 +6,7 @@ module Huffman (
 )  where
 
 type CharFrequency = (Char,Int)
-data Tree = Leaf { value :: CharFrequency } |
+data Tree = Leaf CharFrequency |
     Branch { leftChild :: Tree, rightChild :: Tree }
 
 huffman :: [(Char,Int)] -> [(Char,String)]
@@ -16,5 +16,5 @@ buildHuffmanTree :: [CharFrequency] -> Tree
 buildHuffmanTree xs = Leaf ('a',1)
 
 treeTotal :: Tree -> Int
-treeTotal (Leaf x) = 5
-treeTotal (Branch left right) = 5
+treeTotal (Leaf x) = snd x
+treeTotal (Branch left right) = treeTotal left + treeTotal right
