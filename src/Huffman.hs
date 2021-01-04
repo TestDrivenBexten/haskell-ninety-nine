@@ -8,11 +8,16 @@ module Huffman (
 import Data.List (sortBy)
 
 type CharFrequency = (Char,Int)
-data Tree = Empty | Leaf CharFrequency |
+data Tree = Leaf CharFrequency |
     Branch { leftChild :: Tree, rightChild :: Tree } deriving (Eq, Show)
 
-huffman :: [(Char,Int)] -> [(Char,String)]
-huffman xs = [('a',"01")]
+huffman :: [CharFrequency] -> [(Char,String)]
+huffman xs = encodeHuffmanTree "" $ buildHuffmanTree xs
+
+encodeHuffmanTree :: String -> Tree -> [(Char, String)]
+encodeHuffmanTree encoding (Leaf x) = [(fst x, encoding)]
+encodeHuffmanTree encoding (Branch left right) =
+    encodeHuffmanTree (encoding ++ "0") left ++ encodeHuffmanTree (encoding ++ "1") right
 
 buildHuffmanTree :: [CharFrequency] -> Tree
 buildHuffmanTree xs =
