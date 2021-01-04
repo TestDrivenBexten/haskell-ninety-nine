@@ -23,4 +23,4 @@ spec = do
         describe "Given huffman tree for sample frequencies" $ do
             let huffmanTree = buildHuffmanTree frequencyList
             it "Then the tree should have total of 58" $ do
-                treeTotal huffmanTree `shouldBe` 58
+                treeTotal huffmanTree `shouldBe` 100

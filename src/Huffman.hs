@@ -25,7 +25,11 @@ treeTotal (Branch left right) = treeTotal left + treeTotal right
 
 combineHuffmanTree :: [Tree] -> Tree
 combineHuffmanTree [x] = x
-combineHuffmanTree xs = combineHuffmanTree (tail xs)
+combineHuffmanTree [x,y] = Branch x y
+combineHuffmanTree (x:y:xs) =
+    let newBranch = combineHuffmanTree [x,y]
+        sortedTreeList = sortBy compareTree (newBranch:xs)
+        in combineHuffmanTree sortedTreeList
 
 compareTree :: Tree -> Tree -> Ordering
 compareTree x y
