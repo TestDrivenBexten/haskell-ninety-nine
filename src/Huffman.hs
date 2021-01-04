@@ -8,11 +8,17 @@ module Huffman (
 import Data.List (sortBy)
 
 type CharFrequency = (Char,Int)
+type CharEncoding = (Char,String)
 data Tree = Leaf CharFrequency |
     Branch { leftChild :: Tree, rightChild :: Tree } deriving (Eq, Show)
 
-huffman :: [CharFrequency] -> [(Char,String)]
-huffman xs = encodeHuffmanTree "" $ buildHuffmanTree xs
+huffman :: [CharFrequency] -> [CharEncoding]
+huffman xs = sortBy compareCharEncoding $ encodeHuffmanTree "" $ buildHuffmanTree xs
+
+compareCharEncoding :: CharEncoding -> CharEncoding -> Ordering
+compareCharEncoding (char1,_) (char2,_)
+    | char1 < char2 = LT
+    | otherwise = GT
 
 encodeHuffmanTree :: String -> Tree -> [(Char, String)]
 encodeHuffmanTree encoding (Leaf x) = [(fst x, encoding)]
