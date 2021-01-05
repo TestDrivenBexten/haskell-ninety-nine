@@ -6,7 +6,8 @@ module BinaryTree (
 data Tree a = Empty | Branch a (Tree a) (Tree a)
     deriving (Eq, Show)
 
+xNode = Branch 'x' Empty Empty
+
 cBal :: Int -> [Tree Char]
-cBal 1 = [Branch 'x' Empty Empty]
-cBal 2 = [Branch 'x' (Branch 'x' Empty Empty) Empty,
-            Branch 'x' Empty (Branch 'x' Empty Empty)]
+cBal 1 = [xNode]
+cBal 2 = [Branch 'x' xNode Empty, Branch 'x' Empty xNode]
