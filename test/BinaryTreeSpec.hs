@@ -22,3 +22,6 @@ spec = do
                 Branch 'x' (Branch 'x' Empty baseNode) baseNode,
                 Branch 'x' baseNode (Branch 'x' baseNode Empty),
                 Branch 'x' baseNode (Branch 'x' Empty baseNode)]
+
+        it "Balanced tree with 16 nodes should have 16 permutations" $ do
+            length (cBal 16) `shouldBe` 16
