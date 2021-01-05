@@ -18,9 +18,9 @@ spec = do
             cBal 3 `shouldBe` [Branch 'x' baseNode baseNode]
 
         it "Balanced tree with 4 nodes should have four permutations" $ do
-            cBal 4 `shouldBe` [Branch 'x' (Branch 'x' baseNode Empty) baseNode,
-                Branch 'x' (Branch 'x' Empty baseNode) baseNode,
+            cBal 4 `shouldBe` [Branch 'x' (Branch 'x' baseNode Empty) baseNode,   
                 Branch 'x' baseNode (Branch 'x' baseNode Empty),
+                Branch 'x' (Branch 'x' Empty baseNode) baseNode,
                 Branch 'x' baseNode (Branch 'x' Empty baseNode)]
 
         it "Balanced tree with 16 nodes should have 16 permutations" $ do

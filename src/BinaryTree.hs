@@ -13,4 +13,5 @@ cBal :: Int -> [Tree Char]
 cBal 1 = [xNode]
 cBal 2 = [Branch 'x' xNode Empty, Branch 'x' Empty xNode]
 cBal 3 = [Branch 'x' xNode xNode]
-cBal 4 = [ treeBase | treeBase <- (cBal 3), newLeaf <- (cBal 2)]
+cBal 4 = concat [ [Branch (nodeValue treeBase) newLeaf xNode, 
+            Branch (nodeValue treeBase) xNode newLeaf] | treeBase <- (cBal 3), newLeaf <- (cBal 2)]
